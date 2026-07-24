@@ -1,0 +1,43 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # -------------------------------------------------------
+    # HOSTINGER GIT DEPLOYMENT - ROOT .htaccess
+    # -------------------------------------------------------
+    # This file sits at public_html/ root (the Laravel project root).
+    # It transparently routes ALL web traffic into the public/ subfolder
+    # without changing the visible URL in the browser.
+    #
+    # Laravel project structure on Hostinger:
+    #   public_html/          ← Git deploys here (this file lives here)
+    #   public_html/public/   ← Laravel's actual web root
+    # -------------------------------------------------------
+
+    # If the request already starts with /public, do not rewrite
+    RewriteCond %{REQUEST_URI} !^/public
+
+    # If the requested file exists in /public, serve it directly
+    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+
+    # Rewrite to /public/filename
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+
+    # All other requests → public/index.php (Laravel front controller)
+    RewriteCond %{REQUEST_URI} !^/public
+    RewriteRule ^ public/index.php [L]
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Deny direct access to sensitive Laravel files at root
+<FilesMatch "^(\.env|artisan|composer\.(json|lock)|phpunit\.xml|\.gitignore|\.gitattributes|\.styleci\.yml|CHANGELOG\.md|README\.md|vite\.config\.js|package\.json|package-lock\.json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
