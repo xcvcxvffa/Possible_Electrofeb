@@ -22,4 +22,14 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
 </IfModule>
+
+# Disable directory listing (prevents 403 on empty folders)
+Options -Indexes
+
+# Protect .env and sensitive files
+<FilesMatch "^\.env|composer\.(json|lock)|artisan|phpunit\.xml">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
