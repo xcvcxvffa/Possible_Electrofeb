@@ -76,9 +76,7 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Mission</h3>
-                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">At Possible Electrofeb LLP, our mission goes beyond manufacturing — we aim to be a dependable engineering partner for industries that rely on safe, efficient, and high-performance electrical infrastructure.</p>
-                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">We are committed to delivering electrical panels and fabricated products that meet the highest standards of quality, precision, and durability — tailored to each client's specific operational needs.</p>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">By combining technical expertise with a customer-first approach, we ensure that every solution we provide builds trust, supports growth, and stands the test of demanding industrial environments.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Our mission is not only to manufacture electrical <br>panels and fabricated products but also to become a <br>dependable engineering partner for industries seeking <br>quality, trust and technical expertise.</p>
                             </div>
                         </div>
                     </div>
@@ -89,9 +87,7 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Vision</h3>
-                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">Our vision is to emerge as a leading, full-spectrum engineering and manufacturing solutions provider for industrial electrical infrastructure and energy systems across India and beyond.</p>
-                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">We envision a future where every manufacturing plant, commercial facility, and renewable energy project is powered by intelligent, safe, and efficient electrical systems — designed and delivered by Possible Electrofeb LLP.</p>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Through continuous innovation, skilled engineering, and strategic growth, we strive to set new benchmarks in electrical panel manufacturing and become the most trusted name in industrial electrical solutions.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">We aspire to become a complete engineering and <br>manufacturing solutions provider for industrial <br>electrical infrastructure and energy systems.</p>
                             </div>
                         </div>
                     </div>
