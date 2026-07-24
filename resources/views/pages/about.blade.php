@@ -76,7 +76,7 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Mission</h3>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Our mission is not only to manufacture electrical <br>panels and fabricated products but also to become a <br>dependable engineering partner for industries seeking <br>quality, trust and technical expertise.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Our mission is not only to manufacture electrical panels and fabricated products but also to become a dependable engineering partner for industries seeking quality, trust and technical expertise.</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Vision</h3>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">We aspire to become a complete engineering and <br>manufacturing solutions provider for industrial <br>electrical infrastructure and energy systems.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">We aspire to become a complete engineering and manufacturing solutions provider for industrial electrical infrastructure and energy systems.</p>
                             </div>
                         </div>
                     </div>
