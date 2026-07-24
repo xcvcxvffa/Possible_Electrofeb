@@ -43,9 +43,9 @@
                         <p>years of work <br>experience</p>
                     </div>
                     <div class="about-desc">
-                        <p class="mb-3">POSSIBLE ELECTROFEB LLP is dedicated to delivering reliable and efficient electrical panel solutions for industrial, commercial, infrastructure and renewable energy applications. We focus on providing high-quality power distribution and control systems that ensure safety, performance and long-term operational reliability.</p>
-                        <p class="mb-3">With a commitment to innovation and precision engineering, we design and manufacture customized electrical panel solutions tailored to diverse project requirements. Our approach emphasizes quality standards, advanced technology and dependable service to meet the evolving needs of modern industries.</p>
-                        <p class="mb-0">From planning to execution, we strive to build strong partnerships by offering trusted solutions, timely support and efficient electrical systems that help power sustainable growth and progress.</p>
+                        <p class="mb-3">POSSIBLE ELECTROFEB LLP is a trusted manufacturer of electrical panels and fabricated products, based in Gondal, Gujarat. With over two decades of hands-on experience, we specialize in delivering reliable power distribution and control solutions for industrial, commercial, infrastructure, and renewable energy sectors.</p>
+                        <p class="mb-3">Our manufacturing facility is equipped with modern tools and machinery, enabling us to fabricate precision-built panels — from PCC and MCC to APFC and Solar ACDB/DCDB — that meet stringent performance, safety, and quality benchmarks.</p>
+                        <p class="mb-0">We believe in building long-term relationships with our clients by offering customized engineering, timely delivery, and dependable after-sales support — ensuring their operations run safely and efficiently at every stage.</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,9 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Mission</h3>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Our mission is not only to manufacture electrical panels and fabricated products but also to become a dependable engineering partner for industries seeking quality, trust and technical expertise.</p>
+                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">At Possible Electrofeb LLP, our mission goes beyond manufacturing — we aim to be a dependable engineering partner for industries that rely on safe, efficient, and high-performance electrical infrastructure.</p>
+                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">We are committed to delivering electrical panels and fabricated products that meet the highest standards of quality, precision, and durability — tailored to each client's specific operational needs.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">By combining technical expertise with a customer-first approach, we ensure that every solution we provide builds trust, supports growth, and stands the test of demanding industrial environments.</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +89,9 @@
                             </div>
                             <div class="service-content">
                                 <h3 class="title mb-3" style="font-size: 26px; font-weight: 500; color: #191919;">Our Vision</h3>
-                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">We aspire to become a complete engineering and manufacturing solutions provider for industrial electrical infrastructure and energy systems.</p>
+                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">Our vision is to emerge as a leading, full-spectrum engineering and manufacturing solutions provider for industrial electrical infrastructure and energy systems across India and beyond.</p>
+                                <p class="mb-3 text-secondary fs-6" style="line-height: 1.8;">We envision a future where every manufacturing plant, commercial facility, and renewable energy project is powered by intelligent, safe, and efficient electrical systems — designed and delivered by Possible Electrofeb LLP.</p>
+                                <p class="mb-0 text-secondary fs-6" style="line-height: 1.8;">Through continuous innovation, skilled engineering, and strategic growth, we strive to set new benchmarks in electrical panel manufacturing and become the most trusted name in industrial electrical solutions.</p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +113,7 @@
                     <div class="col-lg-8 col-md-12">
                         <div class="section-heading section-heading-2 mb-0">
                             <h2 class="section-title cursor-effect">Principles <span>Guiding Our</span> Operations</h2>
-                            <p class="mb-0">Delivering durable, reliable and high performance electrical solutions through precision engineering, safety, and strict quality standards.</p>
+                            <p class="mb-0">Every product we deliver is built on a foundation of precision engineering, strict quality standards, and an unwavering commitment to safety — ensuring long-term reliability for every client.</p>
                         </div>
                     </div>
                 </div>
@@ -122,7 +126,7 @@
                                     <img src="{{ asset('assets/img/icon/service-icon-1.png') }}" alt="Quality">
                                 </div>
                             </div>
-                            <p>Delivering durable, reliable and high performance electrical solutions through precision engineering and strict quality standards.</p>
+                            <p>Every panel we manufacture undergoes rigorous testing and inspection to ensure it meets the highest standards of performance, durability, and electrical safety before leaving our facility.</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-12 d-flex">
@@ -133,7 +137,7 @@
                                     <img src="{{ asset('assets/img/icon/service-icon-2.png') }}" alt="Safety">
                                 </div>
                             </div>
-                            <p>Maintaining safe manufacturing practices and dependable systems to ensure secure, efficient and risk-free industrial operations.</p>
+                            <p>Safety is embedded into every step of our manufacturing process. From component selection to final assembly, we follow strict protocols to ensure each product operates securely under all industrial conditions.</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-12 d-flex">
@@ -144,7 +148,7 @@
                                     <img src="{{ asset('assets/img/icon/service-icon-3.png') }}" alt="Innovation">
                                 </div>
                             </div>
-                            <p>Adopting advanced technologies and innovative engineering to meet evolving industry demands efficiently.</p>
+                            <p>We continuously invest in advanced technologies, modern machinery, and updated engineering practices to stay ahead of industry demands and deliver smarter, more efficient electrical solutions.</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-12 d-flex">
@@ -155,7 +159,7 @@
                                     <img src="{{ asset('assets/img/icon/service-icon-4.png') }}" alt="Service">
                                 </div>
                             </div>
-                            <p>Providing customer focused support with timely delivery, responsive communication and reliable engineering solutions.</p>
+                            <p>We are dedicated to providing responsive, end-to-end service — from initial consultation and design through manufacturing, delivery, installation support, and after-sales assistance — ensuring a smooth experience at every stage.</p>
                         </div>
                     </div>
                 </div>
@@ -281,8 +285,9 @@
                 <div class="row align-items-center pt-4 gy-4">
                     <div class="col-lg-6">
                         <div class="about-desc">
-                            <p class="mb-4 fs-6" style="line-height: 1.8; color: #4a4a4a;">We follow a multi-layered testing approach to ensure every electrical panel meets functional, electrical, performance and safety standards before delivery. Our quality assurance process focuses on reliability, precision and long-term operational efficiency across every project.</p>
-                            <p class="mb-0 fs-6" style="line-height: 1.8; color: #4a4a4a;">Every panel undergoes comprehensive inspection throughout the manufacturing process to ensure adherence to quality benchmarks, accurate workmanship and seamless operation in demanding project environments.</p>
+                            <p class="mb-4 fs-6" style="line-height: 1.8; color: #4a4a4a;">At Possible Electrofeb LLP, quality is not an afterthought — it is built into every phase of our manufacturing process. From raw material sourcing and component inspection to assembly, wiring, and final testing, every step is carefully monitored to ensure our products meet the highest industry benchmarks.</p>
+                            <p class="mb-4 fs-6" style="line-height: 1.8; color: #4a4a4a;">We follow a multi-layered quality assurance approach that covers electrical safety verification, functional performance testing, insulation and dielectric checks, wiring accuracy, and compliance validation — all conducted before any panel leaves our facility.</p>
+                            <p class="mb-0 fs-6" style="line-height: 1.8; color: #4a4a4a;">Our commitment to quality ensures that every client receives a product that performs reliably, operates safely, and delivers long-term value — whether deployed in a manufacturing plant, a solar energy installation, or critical infrastructure.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -457,7 +462,7 @@
                     <div class="section-heading text-center align-items-center">
                         <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Build A Dependable Partnership</h4>
                         <h2 class="section-title">Powering <span>Sustainable Growth</span> & Progress</h2>
-                        <p class="mb-4">From planning to execution, we offer trusted electrical panel solutions, timely support and efficient systems.</p>
+                        <p class="mb-4">Whether you need a custom MCC panel, a solar ACDB/DCDB system, or a complete power distribution solution — our team is ready to collaborate, engineer, and deliver a product built for your exact requirements. Let's build something reliable together.</p>
                         <div>
                             <a href="{{ route('contact') }}" class="tl-primary-btn">Contact Our Team <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
                         </div>
