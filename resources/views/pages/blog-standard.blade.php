@@ -1,0 +1,162 @@
+﻿@extends('layouts.master')
+
+@section('title', 'Blog Standard - Antra')
+
+@section('content')
+<div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+        <section class="page-header">
+            <div class="bg-img" data-background="{{ asset('assets/img/bg-img/page-header-bg.png') }}"></div>
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="title">Blog</h1>
+                    <h4 class="sub-title"><a class='home' href='service.html'>Home </a><span class="icon">-</span><a class='inner-page' href='blog-grid.html'> Blog</a></h4>
+                </div>
+            </div>
+        </section>
+        <!-- ./ page-header -->
+
+        <section class="blog-section pt-130 pb-130 fade-wrapper">
+            <div class="container container-2">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="post-inner-card-wrap">
+                            <div class="post-card inner-post">
+                                <div class="post-thumb">
+                                    <img src="{{ asset('assets/img/blog/post-inner-1.png') }}" alt="post">
+                                </div>
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li class="category">exteriors</li>
+                                        <li>Dec 25, 2025</li>
+                                        <li>By <span>Admin</span></li>
+                                    </ul>
+                                    <h3 class="title"><a href="blog-details.html">Transform Your Home With the Modern Interior Design Tips</a></h3>
+                                    <p>Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you’re updating a single room or redesigning your entire home, incorporating modern interior design principles can bring a fresh.</p>
+                                    <a href="blog-details.html" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                            <div class="post-card inner-post">
+                                <div class="post-thumb">
+                                    <img src="{{ asset('assets/img/blog/post-inner-2.png') }}" alt="post">
+                                </div>
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li class="category">exteriors</li>
+                                        <li>Dec 25, 2025</li>
+                                        <li>By <span>Admin</span></li>
+                                    </ul>
+                                    <h3 class="title"><a href="blog-details.html">Transform Your Home With the Modern Interior Design Tips</a></h3>
+                                    <p>Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you’re updating a single room or redesigning your entire home, incorporating modern interior design principles can bring a fresh.</p>
+                                    <a href="blog-details.html" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                            <div class="post-card inner-post">
+                                <div class="post-thumb">
+                                    <img src="{{ asset('assets/img/blog/post-inner-3.png') }}" alt="post">
+                                </div>
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li class="category">exteriors</li>
+                                        <li>Dec 25, 2025</li>
+                                        <li>By <span>Admin</span></li>
+                                    </ul>
+                                    <h3 class="title"><a href="blog-details.html">Transform Your Home With the Modern Interior Design Tips</a></h3>
+                                    <p>Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you’re updating a single room or redesigning your entire home, incorporating modern interior design principles can bring a fresh.</p>
+                                    <a href="blog-details.html" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pagination-wrap mt-100 justify-content-center">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#" class="active">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa-regular fa-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- Sidebar Widgets -->
+                    <div class="col-lg-4">
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Search</h3>
+                            <div class="search-box">
+                                <form action="https://antra.ibthemespro.com/contact.php" class="search-form">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <button class="search-btn" type="button">
+                                        <i class="fa-regular fa-magnifying-glass"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Categories</h3>
+                            <ul class="category-list">
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Electrical & Lighting</a></li>
+                                <li><a href="#">Home Appliance</a></li>
+                                <li><a href="#">Power Tools</a></li>
+                                <li><a href="#">Uncategorized</a></li>
+                                <li><a href="#">Ware Accessories</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Recent Post</h3>
+                            <div class="sidebar-post">
+                                <img src="{{ asset('assets/img/blog/sidebar-post-1.png') }}" alt="post">
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li>Sep 10, 2025</li>
+                                    </ul>
+                                    <h3 class="title"><a href="#">Maximize Your Minimalist Space With Smart Solutions</a></h3>
+                                </div>
+                            </div>
+                            <div class="sidebar-post">
+                                <img src="{{ asset('assets/img/blog/sidebar-post-2.png') }}" alt="post">
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li>Sep 10, 2025</li>
+                                    </ul>
+                                    <h3 class="title"><a href="#">Exploring Trends and Techniques in Interior Design</a></h3>
+                                </div>
+                            </div>
+                            <div class="sidebar-post">
+                                <img src="{{ asset('assets/img/blog/sidebar-post-3.png') }}" alt="post">
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li>Sep 10, 2025</li>
+                                    </ul>
+                                    <h3 class="title"><a href="#">The Aesthetics Agenda: Redefining Interior Elegance</a></h3>
+                                </div>
+                            </div>
+                            <div class="sidebar-post">
+                                <img src="{{ asset('assets/img/blog/sidebar-post-4.png') }}" alt="post">
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li>Sep 10, 2025</li>
+                                    </ul>
+                                    <h3 class="title"><a href="#">Transforming Spaces into Dream Dwellings</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget sticky-widget">
+                            <h3 class="widget-title">Tags</h3>
+                            <ul class="tags">
+                                <li><a href="#">Architechture</a></li>
+                                <li><a href="#">Construction</a></li>
+                                <li><a href="#">Furniture</a></li>
+                                <li><a href="#">Design </a></li>
+                                <li><a href="#">Interior</a></li>
+                                <li><a href="#">Kitchen</a></li>
+                                <li><a href="#">Living Room</a></li>
+                                <li><a href="#">Building</a></li>
+                                <li><a href="#">Planning</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./ blog-section -->
+@endsection
+

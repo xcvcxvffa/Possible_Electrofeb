@@ -1,0 +1,161 @@
+﻿@extends('layouts.master')
+
+@section('title', 'Our Team - Antra')
+
+@section('content')
+<div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+        <section class="page-header">
+            <div class="bg-img" data-background="{{ asset('assets/img/bg-img/page-header-bg.png') }}"></div>
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="title">Our Team</h1>
+                    <h4 class="sub-title"><a class='home' href='index.html'>Home </a><span class="icon">-</span><a class='inner-page' href='team.html'> Team</a></h4>
+                </div>
+            </div>
+        </section>
+        <!-- ./ page-header -->
+
+        <section class="team-section pt-130 pb-130">
+            <div class="container container-2">
+                <div class="row gy-5" data-masonry='{"percentPosition": true }'>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-6.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Mark Jackson</a></h3>
+                                <span>Exhibition designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2 item-1">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-7.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Helen Reeves</a></h3>
+                                <span>Production designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-8.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Alex Podzemsky</a></h3>
+                                <span>Graphics Designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-2.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Mark Jackson</a></h3>
+                                <span>Exhibition designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-4.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Alex Podzemsky</a></h3>
+                                <span>Graphics Designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-item-2">
+                            <div class="team-thumb">
+                                <img src="{{ asset('assets/img/team/team-img-5.png') }}" alt="team">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="title"><a href="{{ route('team.details') }}">Helen Reeves</a></h3>
+                                <span>Production designer</span>
+                                <ul class="team-social">
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./ team-section -->
+
+        <section class="testimonial-section-2 pb-130">
+            <div class="bg-shape"><img src="{{ asset('assets/img/shapes/testi-shape-1.png') }}" alt="shape"></div>
+            <div class="container container-2">
+                <div class="testi-carousel-wrap">
+                    <div class="testi-carousel testi-carousel-2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testi-item-2 text-center">
+                                    <div class="icon"><img src="{{ asset('assets/img/icon/quote.png') }}" alt="icon"></div>
+                                    <div class="content">
+                                        <p>“I absolutely love my the new modern living room! The clean lines, a neutral tones, and minimalist interior create such a calming & stylish atmosphere. Highly recommend their modern interior design services!"</p>
+                                        <div class="testi-author">
+                                            <div class="author-img">
+                                                <img src="{{ asset('assets/img/testi/testi-author-1.png') }}" alt="testi">
+                                            </div>
+                                            <div class="author-content">
+                                                <h4 class="name">Morgan Dufresne</h4>
+                                                <span>Company owner</span>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./ testimonial-section -->
+@endsection
+

@@ -1,0 +1,81 @@
+﻿@extends('layouts.master')
+
+@section('title', 'Portfolio Style 3 - Antra')
+
+@section('content')
+<div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+        <section class="page-header">
+            <div class="bg-img" data-background="{{ asset('assets/img/bg-img/page-header-bg.png') }}"></div>
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="title">Our Projects</h1>
+                    <h4 class="sub-title"><a class='home' href='service.html'>Home </a><span class="icon">-</span><a class='inner-page' href='about.html'> Projects</a></h4>
+                </div>
+            </div>
+        </section>
+        <!-- ./ page-header --> 
+
+        <section class="project-section-inner bg-grey pt-130 pb-130">
+            <div class="container container-2">
+                <div class="project-item-wrap-2">
+                    <div class="project-item-2 antra-hover-view">
+                        <div class="project-thumb">
+                            <a href="{{ route('project.detail') }}"><img src="{{ asset('assets/img/project/project-1.png') }}" alt="project"></a>
+                            <ul>
+                                <li>Residential</li>
+                                <li>Single Home</li>
+                            </ul>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="title">Coastal Harmony <br> Home</h3>
+                            <p>Berlin, Germany <br> 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-item-2 antra-hover-view">
+                        <div class="project-thumb">
+                            <a href="{{ route('project.detail') }}"><img src="{{ asset('assets/img/project/project-2.png') }}" alt="project"></a>
+                            <ul>
+                                <li>Residential</li>
+                                <li>Single Home</li>
+                            </ul>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="title">Coastal Harmony <br> Home</h3>
+                            <p>Berlin, Germany <br> 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-item-2 antra-hover-view">
+                        <div class="project-thumb">
+                            <a href="{{ route('project.detail') }}"><img src="{{ asset('assets/img/project/project-4.png') }}" alt="project"></a>
+                            <ul>
+                                <li>Residential</li>
+                                <li>Single Home</li>
+                            </ul>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="title">Coastal Harmony <br> Home</h3>
+                            <p>Berlin, Germany <br> 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-item-2 antra-hover-view">
+                        <div class="project-thumb">
+                            <a href="{{ route('project.detail') }}"><img src="{{ asset('assets/img/project/project-2.png') }}" alt="project"></a>
+                            <ul>
+                                <li>Residential</li>
+                                <li>Single Home</li>
+                            </ul>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="title">Coastal Harmony <br> Home</h3>
+                            <p>Berlin, Germany <br> 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ./ project-section -->
+@endsection
+
