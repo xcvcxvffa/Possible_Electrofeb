@@ -63,8 +63,9 @@ class PagesController extends Controller
     public function shop(): View { return view('pages.shop'); }
     public function shopDetails(): View { return view('pages.shop-details'); }
 
-    // Contact & Utility
+    // Contact, Careers & Utility
     public function contact(): View { return view('pages.contact'); }
+    public function careers(): View { return view('pages.careers'); }
     public function comingSoon(): View { return view('pages.coming-soon'); }
     public function errorPage(): View { return view('pages.404'); }
 }

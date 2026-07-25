@@ -13,7 +13,7 @@
                 </div>
                 <div class="header-right-wrap">
                     <div class="header-btn-wrap">
-                        <a href="{{ route('contact') }}" class="tl-primary-btn header-btn">Get Company Profile</a>
+                        <a href="{{ asset('assets/Document/POSSIBLE ELECTROFEB COMPANY PROFILE.pdf') }}" target="_blank" class="tl-primary-btn header-btn">Get Company Profile</a>
                     </div>
                     <button class="mobile-side-menu-toggle d-lg-none" aria-label="Toggle Navigation">
                         <i class="fa-solid fa-bars"></i>

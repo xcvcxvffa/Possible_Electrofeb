@@ -30,7 +30,7 @@
     }
 </style>
 <footer class="footer-section overflow-hidden">
-    <div class="footer-bg" data-background="{{ asset('assets/img/bg-img/footer-bg.png') }}"></div>
+    <div class="footer-bg" data-background="{{ asset('assets/img/images/Footer_bg_image.webp') }}"></div>
     <div class="footer-shade"></div>
     <div class="container container-2">
         <div class="row footer-wrap">
@@ -51,6 +51,7 @@
                         <li><a href="{{ route('about') }}">About Us</a></li>
                         <li><a href="{{ route('products') }}">Products</a></li>
                         <li><a href="{{ route('blogs') }}">Blog</a></li>
+                        <li><a href="{{ route('careers') }}">Careers</a></li>
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
                     </ul>
                 </div>
@@ -71,10 +72,10 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
                     <div class="footer-address">
-                        <a class="number d-block mb-1" href="tel:+918200268204" style="font-weight: 600; font-size: 18px;">+91 82002 68204</a>
-                        <a class="mail d-block mb-3" href="mailto:electrofeb@possiblegroups.com" style="font-size: 14.5px; white-space: nowrap; word-break: normal;">electrofeb@possiblegroups.com</a>
+                        <a class="number d-block mb-1" href="tel:+918200268204" style="font-weight: 600; font-size: 20px;">+91 82002 68204</a>
+                        <a class="mail d-block mb-3" href="mailto:electrofeb@possiblegroups.com" style="font-size: 20px; white-space: nowrap; word-break: normal;">electrofeb@possiblegroups.com</a>
                         
-                        <p class="address mb-3" style="color: rgba(255, 255, 255, 0.7); font-size: 13.5px; line-height: 1.6;">
+                        <p class="address mb-3" style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6;">
                             Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311
                         </p>
 

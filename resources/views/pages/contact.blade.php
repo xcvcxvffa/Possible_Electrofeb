@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="position: relative; z-index: 99;">
                                     <div class="col-md-6">
                                         <div class="form-item">
                                             <h4 class="form-title">Email Address *</h4>
@@ -78,8 +78,27 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-item">
+                                            <style>
+                                                /* Ensure all single-line inputs and dropdown have exactly the same dimensions */
+                                                .request-form-wrap .form-item input.form-control,
+                                                .request-form-wrap .form-item .nice-select.form-control {
+                                                    height: 58px;
+                                                    background-color: #ffffff;
+                                                    border: none;
+                                                    border-radius: 24px;
+                                                    width: 100%;
+                                                }
+                                                .request-form-wrap .form-item .nice-select.form-control {
+                                                    padding: 0 20px; /* Horizontal padding only, height handles vertical centering */
+                                                    display: flex;
+                                                    align-items: center;
+                                                }
+                                                .request-form-wrap .form-item .nice-select.form-control::after {
+                                                    right: 25px;
+                                                }
+                                            </style>
                                             <h4 class="form-title">Select Product *</h4>
-                                            <select id="service" name="service" class="form-control form-select" style="height: 52px; background-color: #ffffff; border: 1px solid #e3e3e0; color: #1b1b18; font-size: 14.5px; border-radius: 8px;">
+                                            <select id="service" name="service" class="form-control form-select">
                                                 <option value="" selected disabled>-- Select Product --</option>
                                                 <option value="LT PCC PANELS">LT PCC PANELS</option>
                                                 <option value="LT AC COMBINER PANELS">LT AC COMBINER PANELS</option>
@@ -114,7 +133,7 @@
         
         <div class="map-wrapper pb-150">
             <div class="container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8826.923787362664!2d-118.27754354757262!3d34.03471770929568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20California%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1566525118697!5m2!1svi!2s" width="100%" height="620" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d284.61298043043945!2d70.76555238056405!3d21.939460989790092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39583902a873eaed%3A0xfdb37b1b2f347403!2sPossible%20Electrofeb%20LLP!5e1!3m2!1sen!2sin!4v1784953350218!5m2!1sen!2sin" width="100%" height="620" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
 @endsection

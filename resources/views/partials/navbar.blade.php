@@ -30,7 +30,12 @@
                 <a href="{{ route('blogs') }}">Blog</a>
             </li>
 
-            <!-- 5. Contact -->
+            <!-- 5. Careers -->
+            <li class="{{ request()->routeIs('careers') ? 'active' : '' }}">
+                <a href="{{ route('careers') }}">Careers</a>
+            </li>
+
+            <!-- 6. Contact -->
             <li class="{{ request()->routeIs('contact') ? 'active' : '' }}">
                 <a href="{{ route('contact') }}">Contact</a>
             </li>

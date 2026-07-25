@@ -3,6 +3,31 @@
 @section('title', 'Possible Electrofeb LLP')
 
 @section('content')
+<style>
+/* Custom Mobile Responsiveness for Home Page */
+@media (max-width: 991px) {
+    .pt-130 { padding-top: 80px !important; }
+    .pb-130 { padding-bottom: 80px !important; }
+    .pt-120 { padding-top: 70px !important; }
+    .pb-120 { padding-bottom: 70px !important; }
+    .section-title { font-size: 36px !important; line-height: 1.3 !important; }
+    .section-title.title-2 { font-size: 30px !important; }
+}
+@media (max-width: 767px) {
+    .pt-130 { padding-top: 60px !important; }
+    .pb-130 { padding-bottom: 60px !important; }
+    .pt-120 { padding-top: 50px !important; }
+    .pb-120 { padding-bottom: 50px !important; }
+    .section-title { font-size: 28px !important; }
+    .section-title.title-2 { font-size: 24px !important; }
+    body { overflow-x: hidden; }
+    .about-content-9 { display: flex !important; flex-direction: column !important; }
+    .about-counter { display: flex !important; flex-direction: column !important; align-items: center; justify-content: center; margin-bottom: 25px !important; text-align: center; width: 100%; }
+    .about-counter .title { font-size: 100px !important; line-height: 1 !important; margin: 0 !important; }
+    .about-counter p { writing-mode: horizontal-tb !important; transform: none !important; margin-top: 10px !important; font-size: 18px !important; letter-spacing: normal !important; position: static !important; }
+    .about-btn { text-align: center; }
+}
+</style>
 <div id="antra-smooth-wrapper">
     <div id="antra-smooth-content">
 
@@ -40,16 +65,16 @@
         <section class="about-section-9 pt-130 pb-130 overflow-hidden fade-wrapper tl-bg-color">
             <div class="shape-1"><img src="{{ asset('assets/img/shapes/about-shape-8.png') }}" alt="shape"></div>
             <div class="container container-2">
-                <div class="row section-heading-wrap fade-top ml-0 mw-100">  
+                <div class="row section-heading-wrap fade-top">  
                     <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
                     <div class="col-lg-4 col-md-12">
                         <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">About antra</h4>
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">About Possible Electrofeb</h4>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-12">
                         <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">We Shape <span>Electrical Panels & <br>Engineering</span> Solutions For Modern Industries</h2>
+                            <h2 class="section-title cursor-effect title-2">We Shape <span>Electrical Panels & Engineering</span> Solutions For Modern Industries</h2>
                         </div>
                     </div>
                 </div>
@@ -58,11 +83,11 @@
                 </div>
                 <div class="about-content-9 fade-top">
                     <div class="about-counter">
-                        <h3 class="title"><span class="odometer" data-count="22">0</span></h3>
+                        <h3 class="title"><span class="odometer" data-count="15">0</span></h3>
                         <p>years of work <br>experience</p>
                     </div>
                     <div class="about-desc">
-                        <p>Our mission is to create electrical and engineering solutions that make a lasting impact. We help industries power their operations with safety, precision, and efficiency. From custom electrical panels to complex power distribution systems, we prioritize quality, innovation, and long-term performance.</p>
+                        <p>POSSIBLE ELECTROFEB  is dedicated to delivering reliable and efficient electrical panel solutions for industrial,commercial, infrastructure and renewable energy applications. We focus on providing high-quality power distribution and control systems that ensure safety, performance and long-term operational reliability.</p>
                         <div class="about-btn">
                             <a href="{{ route('about') }}" class="tl-primary-btn">More About Us <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
                         </div>
@@ -186,30 +211,30 @@
                 <div class="row gy-5 fade-wrapper">
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="22">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Years experience</h4>
-                            <p>Delivering high quality electrical & engineering solutions for years</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 fade-top">
-                        <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="189">0</span><span class="icon">+</span></h3>
+                            <h3 class="title"><span class="odometer" data-count="500">0</span><span class="icon">+</span></h3>
                             <h4 class="sub-title">Projects completed</h4>
                             <p>Industrial panel & distribution projects successfully delivered</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="265">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Skilled Engineers</h4>
-                            <p>Expert engineering professionals dedicated to quality & safety</p>
+                            <h3 class="title"><span class="odometer" data-count="15">0</span><span class="icon">+</span></h3>
+                            <h4 class="sub-title">Years experience</h4>
+                            <p>Delivering high quality electrical & engineering solutions for years</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="328">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Client satisfaction</h4>
+                            <h3 class="title"><span class="odometer" data-count="200">0</span><span class="icon">+</span></h3>
+                            <h4 class="sub-title">Happy clients</h4>
                             <p>Long term reliability and trusted partnership across industries</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 fade-top">
+                        <div class="counter-item">
+                            <h3 class="title"><span class="odometer" data-count="9">0</span><span class="icon">+</span></h3>
+                            <h4 class="sub-title">Panel types</h4>
+                            <p>Diverse range of custom electrical panels manufactured to perfection</p>
                         </div>
                     </div>
                 </div>
@@ -220,7 +245,7 @@
         <!-- How We Work Section (from Home-6) -->
         <section class="process-section process-6 pt-130 pb-130 fade-wrapper">
             <div class="container container-2">
-                <div class="row section-heading-wrap ml-0 mw-100 fade-top">  
+                <div class="row section-heading-wrap fade-top">  
                     <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
                     <div class="col-lg-4 col-md-12">
                         <div class="section-heading mb-0">
@@ -237,29 +262,29 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="process-img-6 slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <img src="{{ asset('assets/img/images/process-img-5.png') }}" alt="process">
+                            <img src="{{ asset('assets/img/images/How_We_Work.webp') }}" alt="How We Work">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="process-item-wrap-6 slide-anim" data-delay="0.3" data-offset="100" data-direction="right">
                             <div class="process-item-6 item-1">
                                 <span class="number">01</span>
-                                <h3 class="title"><span>01</span>. Requirement Analysis</h3>
+                                <h3 class="title">Requirement Analysis</h3>
                                 <p>We evaluate your electrical load, single-line diagrams, and site specifications.</p>
                             </div>
                             <div class="process-item-6">
                                 <span class="number">02</span>
-                                <h3 class="title"><span>02</span>. CAD & 3D Panel Design</h3>
+                                <h3 class="title">CAD & 3D Panel Design</h3>
                                 <p>Our engineers craft custom CAD schematics and 3D enclosure layouts.</p>
                             </div>
                             <div class="process-item-6">
                                 <span class="number">03</span>
-                                <h3 class="title"><span>03</span>. Precision Fabrication</h3>
+                                <h3 class="title">Precision Fabrication</h3>
                                 <p>State-of-the-art sheet metal fabrication, busbar bending, and component wiring.</p>
                             </div>
                             <div class="process-item-6">
                                 <span class="number">04</span>
-                                <h3 class="title"><span>04</span>. Testing & Commissioning</h3>
+                                <h3 class="title">Testing & Commissioning</h3>
                                 <p>Comprehensive high-voltage, insulation, and functional testing before site installation.</p>
                             </div>
                         </div>
@@ -269,178 +294,12 @@
         </section>
         <!-- ./ process-section -->
 
-        <section class="project-section pt-130 tl-bg-color fade-wrapper">
-            <div class="bg-shape" data-background="{{ asset('assets/img/shapes/project-shape-1.png') }}"></div>
-            <div class="project-text"><span>Interior</span></div>
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Our Projects</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Creative <span>projects that <br> define</span> our style</h2>
-                            <p class="mb-0">Our portfolio showcases a diverse range of projects, from beautifully crafted <br> residential spaces functional and stylish commercial interiors</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-carousel swiper fade-top">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="{{ asset('assets/img/project/project-img-1.png') }}" alt="project">
-                                    <ul>
-                                        <li><a href="{{ route('project.detail') }}">Residential</a></li>
-                                        <li><a href="{{ route('project.detail') }}">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="{{ route('project.detail') }}">Luxury Skyline</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="{{ asset('assets/img/project/project-img-2.png') }}" alt="project">
-                                    <ul>
-                                        <li><a href="{{ route('project.detail') }}">Residential</a></li>
-                                        <li><a href="{{ route('project.detail') }}">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="{{ route('project.detail') }}">Bohemian Rhapsody</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="{{ asset('assets/img/project/project-img-3.png') }}" alt="project">
-                                    <ul>
-                                        <li><a href="{{ route('project.detail') }}">Residential</a></li>
-                                        <li><a href="{{ route('project.detail') }}">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="{{ route('project.detail') }}">Vintage Glamour</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="{{ asset('assets/img/project/project-img-4.png') }}" alt="project">
-                                    <ul>
-                                        <li><a href="{{ route('project.detail') }}">Residential</a></li>
-                                        <li><a href="{{ route('project.detail') }}">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="{{ route('project.detail') }}">Titan Office Interior </a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="{{ asset('assets/img/project/project-img-5.png') }}" alt="project">
-                                    <ul>
-                                        <li><a href="{{ route('project.detail') }}">Residential</a></li>
-                                        <li><a href="{{ route('project.detail') }}">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="{{ route('project.detail') }}">Living Innovation</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-house-img">
-                <img src="{{ asset('assets/img/images/project-house.png') }}" alt="img">
-            </div>
-        </section>
-        <!-- ./ project-section -->
 
-        <section class="testimonial-section pt-150 fade-wrapper">
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Owr clients say</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Here’s What <span>warm words <br> our clients</span> say</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="testi-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <img src="{{ asset('assets/img/testi/testi-img-1.png') }}" alt="testi">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testi-carousel-wrap slide-anim" data-delay="0.3" data-offset="100" data-direction="right">
-                            <div class="testi-top-content">
-                                <div class="left-content">
-                                    <h3 class="rating">4.80</h3>
-                                    <div class="rating-list">
-                                        <ul>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                            <li><i class="fa-solid fa-star"></i></li>
-                                        </ul>
-                                        <span>2,688 reviews</span>
-                                    </div>
-                                </div>
-                                <div class="right-content">
-                                    <p>From concept to reality, the team turned my <br> vision into a stunning, livable space. I couldn’t <br> be happier with this!</p>
-                                </div>
-                            </div>
-                            <div class="testi-carousel swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="testi-item">
-                                            <p>“A wonderful experience! They knew what they were doing and were incredibly knowledgeable throughout the process."</p>
-                                            <div class="testi-author">
-                                                <div class="author-img">
-                                                    <img src="{{ asset('assets/img/testi/testi-author-1.png') }}" alt="author">
-                                                </div>
-                                                <h4 class="name">Morgan Dufresne <span>Company Owner</span></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ./ testimonial-section -->
+
+
 
         <section class="sponsor-section sponsor-1 bg-grey pt-120 pb-130 overflow-hidden">
             <div class="container">
-                <div class="sponsor-text-wrap">
-                    <h5 class="sponsor-text">Our Website <span>75000</span>+ VIP Customer</h5>
-                </div>
                 <div class="sponsor-carousel swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -480,96 +339,7 @@
         <!-- ./ sponsor-section -->
 
 
-        <section class="team-section bg-grey pt-140 pb-140 tl-bg-color fade-wrapper">
-            <div class="bg-shape"><img src="{{ asset('assets/img/shapes/team-bg-shape-1.png') }}" alt="shape"></div>
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">amazing design team</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Meet the <span>Experts Our <br> interior</span> designers</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row team-wrap">
-                    <div class="col-lg-4">
-                        <div class="team-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <img src="{{ asset('assets/img/team/team-img-1.png') }}" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="team-item-list slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <div class="team-item" data-img="assets/img/team/team-img-1.png">
-                                <div class="left-content">
-                                    <span class="number">01</span>
-                                    <h3 class="title"><a href="{{ route('team.details') }}">Mark Jackson</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="{{ route('team.details') }}"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-2.png">
-                                <div class="left-content">
-                                    <span class="number">02</span>
-                                    <h3 class="title"><a href="{{ route('team.details') }}">Valeria Novikova</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="{{ route('team.details') }}"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-3.png">
-                                <div class="left-content">
-                                    <span class="number">03</span>
-                                    <h3 class="title"><a href="{{ route('team.details') }}">Alex Podzemsky</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="{{ route('team.details') }}"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-4.png">
-                                <div class="left-content">
-                                    <span class="number">04</span>
-                                    <h3 class="title"><a href="{{ route('team.details') }}">Helen Reeves</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="{{ route('team.details') }}"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-5.png">
-                                <div class="left-content">
-                                    <span class="number">05</span>
-                                    <h3 class="title"><a href="{{ route('team.details') }}">Jake Nicholson</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="{{ route('team.details') }}"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ./ team-section -->
+
 
         <section class="video-section">
             <div class="bg-img" data-background="{{ asset('assets/img/bg-img/video-bg-1.png') }}"></div>
@@ -597,12 +367,12 @@
                     <div class="shape"><img src="{{ asset('assets/img/shapes/section-heading.png') }}" alt="shape"></div>
                     <div class="col-lg-4 col-md-12">
                         <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">amazing design team</h4>
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Latest News</h4>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-12">
                         <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Meet the <span>Experts Our <br> interior</span> designers</h2>
+                            <h2 class="section-title cursor-effect title-2">Stay Updated <span>With Our <br> Latest</span> Articles</h2>
                         </div>
                     </div>
                 </div>

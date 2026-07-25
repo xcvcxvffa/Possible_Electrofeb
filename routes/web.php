@@ -64,8 +64,9 @@ Route::get('/team-details', [PagesController::class, 'teamDetails'])->name('team
 Route::get('/shop', [PagesController::class, 'shop'])->name('shop');
 Route::get('/shop-details', [PagesController::class, 'shopDetails'])->name('shop.details');
 
-// Contact & Utility
+// Contact, Careers & Utility
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::get('/careers', [PagesController::class, 'careers'])->name('careers');
 Route::get('/coming-soon', [PagesController::class, 'comingSoon'])->name('coming-soon');
 Route::get('/404', [PagesController::class, 'errorPage'])->name('error-404');
 

@@ -4205,7 +4205,7 @@ ul {
     justify-content: space-between;
     column-gap: 20px;
     row-gap: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
     margin-bottom: 25px;
     border-bottom: 1px solid var(--tl-color-border-1)
 }
