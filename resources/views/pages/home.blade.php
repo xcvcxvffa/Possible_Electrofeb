@@ -37,7 +37,7 @@
                 <!-- Video Background -->
                 <div class="hero-video-wrapper">
                     <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline" poster="{{ asset('assets/img/bg-img/slider-img-1.png') }}" class="hero-video-bg">
-                        <source src="{{ asset('assets/video/Possible_Video.mp4') }}" type="video/mp4">
+                       <source src="{{ asset('assets/Video/Possible_Video.mp4') }}" type="video/mp4">
                     </video>
                     <div class="hero-video-overlay"></div>
                 </div>
