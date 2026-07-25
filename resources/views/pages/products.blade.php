@@ -71,7 +71,7 @@
                     <div class="col-lg-4 col-md-6">
                         <a href="{{ route('product.single', ['slug' => 'meter-panel']) }}" class="service-item-3 antra-hover-view d-block text-decoration-none h-100" style="cursor: pointer;">
                             <div class="service-thumb">
-                                <img src="{{ asset('assets/img/service/service-img-5.png') }}" alt="METER PANEL">
+                                <img src="{{ asset('assets/img/Product Image/Meter_Panel.webp') }}" alt="METER PANEL">
                                 <span class="number">05</span>
                             </div>
                             <div class="service-content">

@@ -166,7 +166,7 @@
                         <div class="swiper-slide">
                             <div class="service-item-2">
                                 <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-5.png') }}" alt="product">
+                                    <img src="{{ asset('assets/img/Product Image/Meter_Panel.webp') }}" alt="product">
                                     <span class="number">05</span>
                                 </div>
                                 <div class="service-content">

@@ -6,7 +6,7 @@
 <body>
     <!-- preloader -->
     <div class="preloader overflow-hidden">
-        <div class="site-name"><span>POSSIBLE ELECTROFEB</span></div>
+        <div class="site-name"><img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="POSSIBLE ELECTROFEB" style="max-height: 80px; width: auto;"></div>
         <div class="preloader-gutters">
             <div class="bar"><div class="inner-bar"></div></div>
             <div class="bar"><div class="inner-bar"></div></div>
