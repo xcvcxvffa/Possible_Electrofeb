@@ -72,8 +72,8 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
                     <div class="footer-address">
-                        <a class="number d-block mb-1" href="tel:+918200268204" style="font-weight: 600; font-size: 20px;">+91 82002 68204</a>
-                        <a class="mail d-block mb-3" href="mailto:electrofeb@possiblegroups.com" style="font-size: 20px; white-space: nowrap; word-break: normal;">electrofeb@possiblegroups.com</a>
+                        <a class="number d-block mb-1" href="tel:+918200268204" style="font-weight: 600; font-size: 25px;">+91 82002 68204</a>
+                        <a class="mail d-block mb-3" href="mailto:electrofeb@possiblegroups.com" style="font-size: 25px; white-space: nowrap; word-break: normal;">electrofeb@possiblegroups.com</a>
                         
                         <p class="address mb-3" style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6;">
                             Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311
@@ -97,5 +97,5 @@
             </div>
         </div>
     </div>
-    <div class="footer-text"><span>Possible </span></div>
-</footer>
+
+</foote r>

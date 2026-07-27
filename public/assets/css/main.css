@@ -17637,18 +17637,17 @@ blockquote .content .author {
     position: relative;
     z-index: 1;
     overflow-x: clip;
-    padding-bottom: 395px
 }
 
 @media only screen and (max-width: 992px) {
     .footer-section {
-        padding-bottom: 250px
+        padding-bottom: 0px
     }
 }
 
 @media only screen and (max-width: 767px) {
     .footer-section {
-        padding-bottom: 100px
+        padding-bottom: 0px
     }
 }
 
@@ -18305,4 +18304,9 @@ blockquote .content .author {
         width: 100% !important;
         font-size: 14px !important;
     }
+}
+
+/* Fix for Odometer right side clipping */
+.odometer-digit-spacer {
+    padding-right: 4px;
 }
