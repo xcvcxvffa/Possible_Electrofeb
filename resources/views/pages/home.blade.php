@@ -121,20 +121,8 @@
                                 <div class="service-thumb">
                                     @if($product->cardMedia && $product->cardMedia->file_path)
                                         <img src="{{ asset('storage/'.$product->cardMedia->file_path) }}" alt="{{ $product->name }}">
-                                    @elseif($product->bannerMedia && $product->bannerMedia->file_path)
-                                        <img src="{{ asset('storage/'.$product->bannerMedia->file_path) }}" alt="{{ $product->name }}">
                                     @else
-                                        @php
-                                            $defaultImages = [
-                                                asset('assets/img/service/service-img-1.png'),
-                                                asset('assets/img/service/service-img-2.png'),
-                                                asset('assets/img/service/service-img-3.png'),
-                                                asset('assets/img/service/service-img-4.png'),
-                                                asset('assets/img/Product Image/Meter_Panel.webp')
-                                            ];
-                                            $fallbackImg = $defaultImages[$index % count($defaultImages)];
-                                        @endphp
-                                        <img src="{{ $fallbackImg }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="{{ $product->name }}">
                                     @endif
                                     <span class="number">{{ sprintf('%02d', $index + 1) }}</span>
                                 </div>
