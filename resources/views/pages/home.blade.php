@@ -27,6 +27,13 @@
     .about-counter p { writing-mode: horizontal-tb !important; transform: none !important; margin-top: 10px !important; font-size: 18px !important; letter-spacing: normal !important; position: static !important; }
     .about-btn { text-align: center; }
 }
+
+/* Uniform product image sizing */
+.service-carousel .service-thumb img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
 </style>
 <div id="antra-smooth-wrapper">
     <div id="antra-smooth-content">
