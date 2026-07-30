@@ -234,7 +234,7 @@
             </thead>
             <tbody>
                 @foreach($products as $product)
-                    <tr>
+                    <tr data-id="{{ $product->id }}">
                         <td class="text-center">
                             <i class="fa-solid fa-grip-vertical drag-handle"></i>
                         </td>
@@ -288,6 +288,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
     $(document).ready(function() {
         var table = $('#productsTable').DataTable({
@@ -343,6 +344,33 @@
 
         table.on('draw', function() { updateCustomPagination(); });
         updateCustomPagination();
+
+        // Drag and Drop reorder
+        var el = document.querySelector('#productsTable tbody');
+        if (el) {
+            Sortable.create(el, {
+                handle: '.drag-handle',
+                animation: 150,
+                onEnd: function () {
+                    var orders = [];
+                    $('#productsTable tbody tr').each(function(index) {
+                        var id = $(this).data('id');
+                        if (id) {
+                            orders.push({ id: id, position: index + 1 });
+                        }
+                    });
+                    
+                    $.ajax({
+                        url: '{{ route('admin.products.reorder') }}',
+                        method: 'POST',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            orders: orders
+                        }
+                    });
+                }
+            });
+        }
     });
 </script>
 

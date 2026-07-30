@@ -23,6 +23,10 @@ class ProductRequest extends FormRequest
                 'slug' => Str::slug($this->name)
             ]);
         }
+        
+        $this->merge([
+            'status' => $this->has('status') ? 1 : 0,
+        ]);
     }
 
     public function rules(): array

@@ -69,6 +69,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/folders/{mediaFolder}', [App\Http\Controllers\Admin\FolderController::class, 'destroy'])->name('folders.destroy');
         
         // Products Module
+        Route::post('products/reorder', [App\Http\Controllers\Admin\ProductController::class, 'reorder'])->name('products.reorder');
         Route::resource('product-categories', App\Http\Controllers\Admin\ProductCategoryController::class);
         Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
 

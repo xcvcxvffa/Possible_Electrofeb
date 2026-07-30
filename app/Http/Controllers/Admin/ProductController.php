@@ -51,4 +51,13 @@ class ProductController extends Controller
         $this->productService->deleteProduct($id);
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
     }
+
+    public function reorder(Request $request)
+    {
+        $orders = $request->input('orders', []);
+        foreach ($orders as $order) {
+            \App\Models\Product::where('id', $order['id'])->update(['sort_order' => $order['position']]);
+        }
+        return response()->json(['success' => true]);
+    }
 }
