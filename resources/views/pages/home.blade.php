@@ -121,6 +121,8 @@
                                 <div class="service-thumb">
                                     @if($product->cardMedia && $product->cardMedia->file_path)
                                         <img src="{{ asset('storage/'.$product->cardMedia->file_path) }}" alt="{{ $product->name }}">
+                                    @elseif($product->bannerMedia && $product->bannerMedia->file_path)
+                                        <img src="{{ asset('storage/'.$product->bannerMedia->file_path) }}" alt="{{ $product->name }}">
                                     @else
                                         @php
                                             $defaultImages = [

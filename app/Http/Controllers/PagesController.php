@@ -31,7 +31,7 @@ class PagesController extends Controller
 
     public function products(): View { 
         $categories = \App\Models\ProductCategory::where('status', true)->orderBy('sort_order')->get();
-        $products = \App\Models\Product::with('cardMedia')->where('status', true)->orderBy('sort_order')->paginate(12);
+        $products = \App\Models\Product::with(['cardMedia', 'bannerMedia'])->where('status', true)->orderBy('sort_order')->paginate(12);
         return view('pages.products', compact('categories', 'products')); 
     }
     public function product2(): View { return view('pages.product-2'); }

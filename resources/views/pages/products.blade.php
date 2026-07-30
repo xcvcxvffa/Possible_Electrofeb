@@ -26,6 +26,8 @@
                             <div class="service-thumb">
                                 @if($product->cardMedia)
                                     <img src="{{ asset('storage/' . $product->cardMedia->file_path) }}" alt="{{ $product->name }}">
+                                @elseif($product->bannerMedia)
+                                    <img src="{{ asset('storage/' . $product->bannerMedia->file_path) }}" alt="{{ $product->name }}">
                                 @else
                                     <img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="{{ $product->name }}">
                                 @endif

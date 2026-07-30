@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $globalProducts = collect();
             $globalCategories = collect();
             if (\Illuminate\Support\Facades\Schema::hasTable('products')) {
-                $globalProducts = \App\Models\Product::with('cardMedia')->where('status', true)->orderBy('sort_order')->get();
+                $globalProducts = \App\Models\Product::with(['cardMedia', 'bannerMedia'])->where('status', true)->orderBy('sort_order')->get();
             }
             if (\Illuminate\Support\Facades\Schema::hasTable('product_categories')) {
                 $globalCategories = \App\Models\ProductCategory::where('status', true)->orderBy('sort_order')->get();
