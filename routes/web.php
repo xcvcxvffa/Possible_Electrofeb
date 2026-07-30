@@ -74,6 +74,15 @@ Route::post('/careers/apply', [PagesController::class, 'applyCareer'])->name('ca
 Route::get('/coming-soon', [PagesController::class, 'comingSoon'])->name('coming-soon');
 Route::get('/404', [PagesController::class, 'errorPage'])->name('error-404');
 
+// Serve Storage Files Bypass (Hostinger Git Deploy Fix)
+Route::get('storage/{path}', function ($path) {
+    $filePath = storage_path('app/public/' . $path);
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->file($filePath);
+})->where('path', '.*');
+
 Route::fallback(function (\Illuminate\Http\Request $request) {
     if ($request->is('admin') || $request->is('admin/*')) {
         return response()->view('admin.errors.404', [], 404);
