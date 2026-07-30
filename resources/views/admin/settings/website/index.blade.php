@@ -213,7 +213,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Changes</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -249,7 +249,7 @@
                                     {!! $renderFileUI('Company Profile PDF', 'company_profile_pdf', false, '10MB', '', true) !!}
 
                                     <div class="text-end mt-4">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Assets</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Assets</button>
                                     </div>
                                 </form>
                             </div>
@@ -293,7 +293,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Contact Info</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Contact Info</button>
                                     </div>
                                 </form>
                             </div>
@@ -355,7 +355,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Links</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Links</button>
                                     </div>
                                 </form>
                             </div>
@@ -388,7 +388,7 @@
                                     {!! $renderFileUI('Default OG Image', 'default_og_image', false, '2MB', '1200x630px') !!}
 
                                     <div class="text-end mt-4">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save SEO Settings</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save SEO Settings</button>
                                     </div>
                                 </form>
                             </div>
@@ -442,7 +442,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Statistics</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Statistics</button>
                                     </div>
                                 </form>
                             </div>
