@@ -45,7 +45,7 @@
                             
                             <h1 class="details-title mt-4" style="color: #0097A0; font-weight: 500; letter-spacing: 0.5px;">{{ $product->name }}</h1>
                             <div class="fs-6 mb-4" style="line-height: 1.8; color: #4a4a4a;">
-                                {!! nl2br(e($product->description)) !!}
+                                {!! $product->description !!}
                             </div>
                             
                             @if($product->features->count() > 0 || $product->applications->count() > 0)
