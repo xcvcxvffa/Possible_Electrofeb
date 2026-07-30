@@ -349,7 +349,7 @@
                                     {!! $renderFileUI('Admin Favicon', 'admin_favicon', false, '512KB', 'Square 64x64px') !!}
 
                                     <div class="text-end mt-4">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Admin Branding</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Admin Branding</button>
                                     </div>
                                 </form>
                             </div>
