@@ -83,7 +83,7 @@
                 </div>
                 <div class="about-content-9 fade-top">
                     <div class="about-counter">
-                        <h3 class="title"><span class="odometer" data-count="15">0</span></h3>
+                        <h3 class="title"><span class="odometer" data-count="{{ $setting?->years_of_experience ?? 15 }}">0</span></h3>
                         <p>years of work <br>experience</p>
                     </div>
                     <div class="about-desc">
@@ -115,90 +115,34 @@
                 </div>
                 <div class="service-carousel swiper fade-top">
                     <div class="swiper-wrapper">
+                        @foreach($globalProducts as $index => $product)
                         <div class="swiper-slide">
                             <div class="service-item-2">
                                 <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="product">
-                                    <span class="number">01</span>
+                                    @if($product->cardMedia && $product->cardMedia->file_path)
+                                        <img src="{{ asset('storage/'.$product->cardMedia->file_path) }}" alt="{{ $product->name }}">
+                                    @else
+                                        @php
+                                            $defaultImages = [
+                                                asset('assets/img/service/service-img-1.png'),
+                                                asset('assets/img/service/service-img-2.png'),
+                                                asset('assets/img/service/service-img-3.png'),
+                                                asset('assets/img/service/service-img-4.png'),
+                                                asset('assets/img/Product Image/Meter_Panel.webp')
+                                            ];
+                                            $fallbackImg = $defaultImages[$index % count($defaultImages)];
+                                        @endphp
+                                        <img src="{{ $fallbackImg }}" alt="{{ $product->name }}">
+                                    @endif
+                                    <span class="number">{{ sprintf('%02d', $index + 1) }}</span>
                                 </div>
                                 <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">LT AC COMBINER PANELS</a></h5>
-                                    <p>High-capacity LT AC combiner boxes designed for robust power integration and solar generation.</p>
+                                    <h5 class="title"><a href="{{ route('product.single', ['slug' => $product->slug]) }}">{{ strtoupper($product->name) }}</a></h5>
+                                    <p>{{ $product->short_description ?? 'High-capacity electrical panels designed for robust power distribution and safety.' }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-2.png') }}" alt="product">
-                                    <span class="number">02</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">LT PCC PANELS</a></h5>
-                                    <p>Heavy-duty Power Control Center panels for centralized power distribution and safety.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-3.png') }}" alt="product">
-                                    <span class="number">03</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">LT MCC PANEL</a></h5>
-                                    <p>Advanced Motor Control Center panels for reliable motor protection and automated control.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-4.png') }}" alt="product">
-                                    <span class="number">04</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">APFC PANEL</a></h5>
-                                    <p>Automatic Power Factor Correction panels engineered to optimize energy efficiency and reduce utility costs.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/Product Image/Meter_Panel.webp') }}" alt="product">
-                                    <span class="number">05</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">METER PANEL</a></h5>
-                                    <p>Precision electrical meter panels for industrial and commercial power monitoring.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="product">
-                                    <span class="number">06</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">SOLAR ACDB / DCDB PANEL</a></h5>
-                                    <p>ACDB and DCDB distribution boxes tailored for solar power installations and isolation.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="service-item-2">
-                                <div class="service-thumb">
-                                    <img src="{{ asset('assets/img/service/service-img-2.png') }}" alt="product">
-                                    <span class="number">07</span>
-                                </div>
-                                <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single') }}">CABLE TRAY SYSTEM</a></h5>
-                                    <p>Industrial-grade perforated and ladder cable trays for organized cable management.</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -211,28 +155,28 @@
                 <div class="row gy-5 fade-wrapper">
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="500">0</span><span class="icon">+</span></h3>
+                            <h3 class="title"><span class="odometer" data-count="{{ $setting?->completed_projects ?? 500 }}">0</span><span class="icon">+</span></h3>
                             <h4 class="sub-title">Projects completed</h4>
                             <p>Industrial panel & distribution projects successfully delivered</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="15">0</span><span class="icon">+</span></h3>
+                            <h3 class="title"><span class="odometer" data-count="{{ $setting?->years_of_experience ?? 15 }}">0</span><span class="icon">+</span></h3>
                             <h4 class="sub-title">Years experience</h4>
                             <p>Delivering high quality electrical & engineering solutions for years</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="200">0</span><span class="icon">+</span></h3>
+                            <h3 class="title"><span class="odometer" data-count="{{ $setting?->happy_clients ?? 200 }}">0</span><span class="icon">+</span></h3>
                             <h4 class="sub-title">Happy clients</h4>
                             <p>Long term reliability and trusted partnership across industries</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 fade-top">
                         <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="9">0</span><span class="icon">+</span></h3>
+                            <h3 class="title"><span class="odometer" data-count="{{ $setting?->products_delivered ?? 9 }}">0</span><span class="icon">+</span></h3>
                             <h4 class="sub-title">Panel types</h4>
                             <p>Diverse range of custom electrical panels manufactured to perfection</p>
                         </div>
@@ -378,54 +322,41 @@
                 </div>
                 <div class="blog-carousel swiper fade-top">
                     <div class="swiper-wrapper">
+                        @forelse($latestBlogs as $post)
+                        <div class="swiper-slide">
+                            <div class="post-card">
+                                <div class="post-thumb">
+                                    @if($post->featuredMedia)
+                                        <img src="{{ asset('storage/' . $post->featuredMedia->file_path) }}" alt="{{ $post->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/img/blog/post-1.jpg') }}" alt="{{ $post->title }}">
+                                    @endif
+                                    @if($post->category)
+                                        <span class="category">{{ $post->category->name }}</span>
+                                    @endif
+                                </div>
+                                <div class="post-content">
+                                    <ul class="post-meta">
+                                        <li>{{ ($post->published_at ?? $post->created_at)->format('M d, Y') }}</li>
+                                        <li>By <span>{{ $post->author ? $post->author->name : 'Admin' }}</span></li>
+                                    </ul>
+                                    <h3 class="title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h3>
+                                    <p>{{ Str::limit(strip_tags($post->excerpt ?: $post->content), 90) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
                         <div class="swiper-slide">
                             <div class="post-card">
                                 <div class="post-thumb">
                                     <img src="{{ asset('assets/img/blog/post-1.jpg') }}" alt="post">
-                                    <span class="category">exteriors</span>
                                 </div>
                                 <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
+                                    <p class="text-muted">No blog posts found.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-2.png') }}" alt="post">
-                                    <span class="category">exteriors</span>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-3.png') }}" alt="post">
-                                    <span class="category">exteriors</span>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

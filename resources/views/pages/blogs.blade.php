@@ -21,113 +21,77 @@
             <div class="container container-2">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <div class="post-card inner-post">
-                            <div class="post-thumb">
-                                <img src="{{ asset('assets/img/blog/post-inner-1.png') }}" alt="post">
+                        @forelse($blogs as $blog)
+                            @if($loop->first)
+                                <div class="post-card inner-post">
+                                    <div class="post-thumb">
+                                        @if($blog->featuredMedia)
+                                            <img src="{{ asset('storage/' . $blog->featuredMedia->file_path) }}" alt="{{ $blog->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/img/blog/post-inner-1.png') }}" alt="{{ $blog->title }}">
+                                        @endif
+                                    </div>
+                                    <div class="post-content">
+                                        <ul class="post-meta">
+                                            <li class="category">{{ $blog->category ? $blog->category->name : 'General' }}</li>
+                                            <li>{{ $blog->published_at ? $blog->published_at->format('M d, Y') : $blog->created_at->format('M d, Y') }}</li>
+                                            <li>By <span>{{ $blog->author ? $blog->author->name : 'Admin' }}</span></li>
+                                        </ul>
+                                        <h3 class="title"><a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a></h3>
+                                        <p>{{ $blog->excerpt ?? Str::limit(strip_tags($blog->content), 200) }}</p>
+                                        <a href="{{ route('blog.show', $blog->slug) }}" class="read-more">Read More</a>
+                                    </div>
+                                </div>
+                                @if($blogs->count() > 1)
+                                    <div class="post-card-wrap post-card-wrap-inner">
+                                @endif
+                            @else
+                                <div class="post-card">
+                                    <div class="post-thumb">
+                                        @if($blog->featuredMedia)
+                                            <img src="{{ asset('storage/' . $blog->featuredMedia->file_path) }}" alt="{{ $blog->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/img/blog/post-6.png') }}" alt="{{ $blog->title }}">
+                                        @endif
+                                    </div>
+                                    <div class="post-content">
+                                        <ul class="post-meta">
+                                            <li class="category">{{ $blog->category ? $blog->category->name : 'General' }}</li>
+                                            <li>{{ $blog->published_at ? $blog->published_at->format('M d, Y') : $blog->created_at->format('M d, Y') }}</li>
+                                            <li>By <span>{{ $blog->author ? $blog->author->name : 'Admin' }}</span></li>
+                                        </ul>
+                                        <h3 class="title"><a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a></h3>
+                                        <p>{{ $blog->excerpt ?? Str::limit(strip_tags($blog->content), 120) }}</p>
+                                        <a href="{{ route('blog.show', $blog->slug) }}" class="read-more">Read More</a>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if($loop->last && $blogs->count() > 1)
+                                    </div>
+                            @endif
+                        @empty
+                            <div class="post-card inner-post py-5 text-center">
+                                <h3 class="title">No blog posts found</h3>
+                                <p>We haven't published any articles in this category or search query yet.</p>
+                                <a href="{{ route('blogs') }}" class="read-more">View All Posts</a>
                             </div>
-                            <div class="post-content">
-                                <ul class="post-meta">
-                                    <li class="category">exteriors</li>
-                                    <li>Dec 25, 2025</li>
-                                    <li>By <span>Admin</span></li>
-                                </ul>
-                                <h3 class="title"><a href="{{ route('blog.single') }}">Transform Your Home With the Modern Interior Design Tips</a></h3>
-                                <p>Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you’re updating a single room or redesigning your entire home, incorporating modern interior design principles can bring a fresh.</p>
-                                <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
+                        @endforelse
+
+                        @if($blogs->hasPages())
+                            <div class="mt-100 d-flex justify-content-center">
+                                {{ $blogs->links() }}
                             </div>
-                        </div>
-                        <div class="post-card-wrap post-card-wrap-inner">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-6.png') }}" alt="post">
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Maximize Your Minimalist Space With Smart Solutions</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                    <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-5.png') }}" alt="post">
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Perfectly Redefining Interior Spaces for Modern Lifestyles</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                    <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-4.png') }}" alt="post">
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Modern Materials That Elevate Your Home’s Functionality</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                    <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-3.png') }}" alt="post">
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Modern Rooms Creating Elegant Spaces for Relaxation</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                    <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="{{ asset('assets/img/blog/post-2.png') }}" alt="post">
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Luxury Living Redefined Elegant for the Modern Home</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                    <a href="{{ route('blog.single') }}" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="pagination-wrap mt-100 justify-content-center">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#" class="active">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa-regular fa-arrow-right"></i></a></li>
-                        </ul>
+                        @endif
                     </div>
                     <!-- Sidebar Widgets -->
                     <div class="col-lg-4">
                         <div class="sidebar-widget">
                             <h3 class="widget-title">Search</h3>
                             <div class="search-box">
-                                <form action="#" class="search-form">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <button class="search-btn" type="button">
+                                <form action="{{ route('blogs') }}" method="GET" class="search-form">
+                                    <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                                    <button class="search-btn" type="submit">
                                         <i class="fa-regular fa-magnifying-glass"></i>
                                     </button>
                                 </form>
@@ -136,67 +100,41 @@
                         <div class="sidebar-widget">
                             <h3 class="widget-title">Categories</h3>
                             <ul class="category-list">
-                                <li><a href="{{ route('blogs') }}">Accessories</a></li>
-                                <li><a href="{{ route('blogs') }}">Electrical & Lighting</a></li>
-                                <li><a href="{{ route('blogs') }}">Home Appliance</a></li>
-                                <li><a href="{{ route('blogs') }}">Power Tools</a></li>
-                                <li><a href="{{ route('blogs') }}">Uncategorized</a></li>
-                                <li><a href="{{ route('blogs') }}">Ware Accessories</a></li>
+                                @forelse($categories as $cat)
+                                    <li>
+                                        <a href="{{ route('blogs', ['category' => $cat->slug]) }}">
+                                            {{ $cat->name }}
+                                            @if($cat->blogs_count > 0)
+                                                <span>({{ $cat->blogs_count }})</span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li><a href="#">No categories found</a></li>
+                                @endforelse
                             </ul>
                         </div>
                         <div class="sidebar-widget">
                             <h3 class="widget-title">Recent Post</h3>
-                            <div class="sidebar-post">
-                                <img src="{{ asset('assets/img/blog/sidebar-post-1.png') }}" alt="post">
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Sep 10, 2025</li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Maximize Your Minimalist Space With Smart Solutions</a></h3>
+                            @forelse($recentBlogs as $recent)
+                                <div class="sidebar-post">
+                                    @if($recent->featuredMedia)
+                                        <img src="{{ asset('storage/' . $recent->featuredMedia->file_path) }}" alt="{{ $recent->title }}" style="width: 80px; height: 80px; object-fit: cover;">
+                                    @else
+                                        <img src="{{ asset('assets/img/blog/sidebar-post-1.png') }}" alt="{{ $recent->title }}">
+                                    @endif
+                                    <div class="post-content">
+                                        <ul class="post-meta">
+                                            <li>{{ $recent->published_at ? $recent->published_at->format('M d, Y') : $recent->created_at->format('M d, Y') }}</li>
+                                        </ul>
+                                        <h3 class="title"><a href="{{ route('blog.show', $recent->slug) }}">{{ $recent->title }}</a></h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="sidebar-post">
-                                <img src="{{ asset('assets/img/blog/sidebar-post-2.png') }}" alt="post">
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Sep 10, 2025</li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Exploring Trends and Techniques in Interior Design</a></h3>
-                                </div>
-                            </div>
-                            <div class="sidebar-post">
-                                <img src="{{ asset('assets/img/blog/sidebar-post-3.png') }}" alt="post">
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Sep 10, 2025</li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">The Aesthetics Agenda: Redefining Interior Elegance</a></h3>
-                                </div>
-                            </div>
-                            <div class="sidebar-post">
-                                <img src="{{ asset('assets/img/blog/sidebar-post-4.png') }}" alt="post">
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Sep 10, 2025</li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('blog.single') }}">Transforming Spaces into Dream Dwellings</a></h3>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-muted">No recent posts found.</p>
+                            @endforelse
                         </div>
-                        <div class="sidebar-widget sticky-widget">
-                            <h3 class="widget-title">Tags</h3>
-                            <ul class="tags">
-                                <li><a href="{{ route('blogs') }}">Architechture</a></li>
-                                <li><a href="{{ route('blogs') }}">Construction</a></li>
-                                <li><a href="{{ route('blogs') }}">Furniture</a></li>
-                                <li><a href="{{ route('blogs') }}">Design </a></li>
-                                <li><a href="{{ route('blogs') }}">Interior</a></li>
-                                <li><a href="{{ route('blogs') }}">Kitchen</a></li>
-                                <li><a href="{{ route('blogs') }}">Living Room</a></li>
-                                <li><a href="{{ route('blogs') }}">Building</a></li>
-                                <li><a href="{{ route('blogs') }}">Planning</a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>

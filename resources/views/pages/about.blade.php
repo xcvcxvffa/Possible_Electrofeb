@@ -74,7 +74,7 @@
                 </div>
                 <div class="about-content-9 fade-top">
                     <div class="about-counter">
-                        <h3 class="title"><span class="odometer" data-count="15">0</span></h3>
+                        <h3 class="title"><span class="odometer" data-count="{{ $setting?->years_of_experience ?? 15 }}">0</span></h3>
                         <p>years of work <br>experience</p>
                     </div>
                     <div class="about-desc">

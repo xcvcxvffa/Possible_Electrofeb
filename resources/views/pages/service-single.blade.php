@@ -36,8 +36,8 @@
                                 <div class="cta-bg" data-background="{{ asset('assets/img/bg-img/service-cta-bg-2.png') }}"></div>
                                 <div class="icon"><img src="{{ asset('assets/img/icon/service-details-cta.png') }}" alt="icon"></div>
                                 <span>Do You Need Help?</span>
-                                <a class="number" href="tel:+918200268204">+91 82002 68204</a>
-                                <a class="mail" href="mailto:electrofeb@possiblegroups.com">electrofeb@possiblegroups.com</a>
+                                <a class="number" href="tel:{{ preg_replace('/[^0-9+]/', '', $setting?->company_phone ?? '+918200268204') }}">{{ $setting?->company_phone ?? '+91 82002 68204' }}</a>
+                                <a class="mail" href="mailto:{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}">{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}</a>
                                 <div class="cta-btn">
                                     <a href="{{ route('contact') }}">Get a call <br> Back</a>
                                 </div>

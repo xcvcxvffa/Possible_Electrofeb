@@ -43,11 +43,12 @@ Route::get('/portfolio-2', [PagesController::class, 'portfolio2'])->name('portfo
 Route::get('/portfolio-3', [PagesController::class, 'portfolio3'])->name('portfolio-3');
 Route::get('/project-details', [PagesController::class, 'projectDetails'])->name('project.detail');
 
-// Blog Demos
+// Blog Demos & Enterprise Dynamic Routes
 Route::get('/blogs', [PagesController::class, 'blogs'])->name('blogs');
 Route::get('/blog-grid', [PagesController::class, 'blogGrid'])->name('blog.grid');
 Route::get('/blog-list', [PagesController::class, 'blogList'])->name('blog.list');
 Route::get('/blog-standard', [PagesController::class, 'blogStandard'])->name('blog.standard');
+Route::get('/blog/{slug?}', [PagesController::class, 'blogSingle'])->name('blog.show');
 Route::get('/blog-single', [PagesController::class, 'blogSingle'])->name('blog.single');
 
 // Galleries & Misc
@@ -66,10 +67,16 @@ Route::get('/shop-details', [PagesController::class, 'shopDetails'])->name('shop
 
 // Contact, Careers & Utility
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::post('/contact/submit', [PagesController::class, 'submitContact'])->name('contact.submit');
 Route::get('/careers', [PagesController::class, 'careers'])->name('careers');
+Route::post('/careers/apply', [PagesController::class, 'applyCareer'])->name('careers.apply');
+
 Route::get('/coming-soon', [PagesController::class, 'comingSoon'])->name('coming-soon');
 Route::get('/404', [PagesController::class, 'errorPage'])->name('error-404');
 
-Route::fallback(function () {
+Route::fallback(function (\Illuminate\Http\Request $request) {
+    if ($request->is('admin') || $request->is('admin/*')) {
+        return response()->view('admin.errors.404', [], 404);
+    }
     return response()->view('pages.404', [], 404);
 });

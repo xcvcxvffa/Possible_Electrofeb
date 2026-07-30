@@ -15,13 +15,9 @@
             <li class="menu-item-has-children {{ request()->routeIs('products') || request()->routeIs('product*') || request()->routeIs('services') || request()->routeIs('service*') ? 'active' : '' }}">
                 <a href="{{ route('products') }}">Products</a>
                 <ul>
-                    <li><a href="{{ route('product.single', ['slug' => 'lt-pcc-panels']) }}">LT PCC PANELS</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'lt-ac-combiner-panels']) }}">LT AC COMBINER PANELS</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'lt-mcc-panel']) }}">LT MCC PANEL</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'apfc-panel']) }}">APFC PANEL</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'meter-panel']) }}">METER PANEL</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'solar-acdb-dcdb-panel']) }}">SOLAR ACDB / DCDB PANEL</a></li>
-                    <li><a href="{{ route('product.single', ['slug' => 'cable-tray-system']) }}">CABLE TRAY SYSTEM</a></li>
+                    @foreach($globalProducts as $navProduct)
+                        <li><a href="{{ route('product.single', ['slug' => $navProduct->slug]) }}">{{ strtoupper($navProduct->name) }}</a></li>
+                    @endforeach
                 </ul>
             </li>
 

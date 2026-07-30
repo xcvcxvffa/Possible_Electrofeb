@@ -38,7 +38,7 @@
                 <div class="footer-widget">
                     <div class="widget-header">
                         <div class="footer-logo">
-                            <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="Possible Electrofeb Logo" style="max-height: 48px; width: auto;"></a>
+                            <a href="{{ route('home') }}"><img src="{{ $setting?->logo ? asset('storage/'.$setting?->logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="{{ $setting?->company_name ?? 'Possible Electrofeb' }} Logo" style="max-height: 48px; width: auto;"></a>
                         </div>
                     </div>
                     <p class="mb-0" style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.7;">High-performance electrical panels, LT PCC, LT MCC, APFC, and custom industrial distribution solutions.</p>
@@ -59,24 +59,20 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget footer-col-2 pl-0">
                     <ul class="footer-list">
-                        <li><a href="{{ route('product.single', ['slug' => 'lt-pcc-panels']) }}">LT PCC PANELS</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'lt-ac-combiner-panels']) }}">LT AC COMBINER PANELS</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'lt-mcc-panel']) }}">LT MCC PANEL</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'apfc-panel']) }}">APFC PANEL</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'meter-panel']) }}">METER PANEL</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'solar-acdb-dcdb-panel']) }}">SOLAR ACDB / DCDB PANEL</a></li>
-                        <li><a href="{{ route('product.single', ['slug' => 'cable-tray-system']) }}">CABLE TRAY SYSTEM</a></li>
+                        @foreach($globalProducts as $footerProduct)
+                            <li><a href="{{ route('product.single', ['slug' => $footerProduct->slug]) }}">{{ strtoupper($footerProduct->name) }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
                     <div class="footer-address">
-                        <a class="number d-block mb-1" href="tel:+918200268204" style="font-weight: 600; font-size: 25px;">+91 82002 68204</a>
-                        <a class="mail d-block mb-3" href="mailto:electrofeb@possiblegroups.com" style="font-size: 25px; white-space: nowrap; word-break: normal;">electrofeb@possiblegroups.com</a>
+                        <a class="number d-block mb-1" href="tel:{{ preg_replace('/[^0-9+]/', '', $setting?->company_phone ?? '+918200268204') }}" style="font-weight: 600; font-size: 25px;">{{ $setting?->company_phone ?? '+91 82002 68204' }}</a>
+                        <a class="mail d-block mb-3" href="mailto:{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}" style="font-size: 25px; white-space: nowrap; word-break: normal;">{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}</a>
                         
                         <p class="address mb-3" style="color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.6;">
-                            Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311
+                            {{ $setting?->company_address ?? 'Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311' }}
                         </p>
 
                         <ul class="footer-social-icons list-unstyled d-flex align-items-center gap-2 mt-3 mb-0">
@@ -93,7 +89,7 @@
     <div class="copyright-area">
         <div class="container">
             <div class="copyright-content">
-                <p>© {{ date('Y') }} Possible Electrofeb LLP. All Rights Reserved.</p>
+                <p>© {{ date('Y') }} {{ $setting?->company_name ?? 'Possible Electrofeb LLP' }}. All Rights Reserved.</p>
             </div>
         </div>
     </div>

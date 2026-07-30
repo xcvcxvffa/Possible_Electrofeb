@@ -35,6 +35,13 @@
                 <!-- Job List Container -->
                 <div class="row fade-top">
                     <div class="col-lg-10 offset-lg-1">
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 8px;">
+                                <i class="fa-solid fa-circle-check me-2"></i>{{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <div class="job-list-card" style="background: #ffffff; border-radius: 12px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; z-index: 1;">
                             
                             <!-- Filter Row -->
@@ -47,8 +54,9 @@
                                 <div class="flex-shrink-0">
                                     <select id="jobLocationSelect" class="nice-select custom-gray-box" style="min-width: 220px;">
                                         <option value="">All Locations</option>
-                                        <option value="rajkot">Rajkot, Gujarat</option>
-                                        <option value="ahmedabad">Ahmedabad, Gujarat</option>
+                                        @foreach($locations as $loc)
+                                            <option value="{{ strtolower($loc->city) }}">{{ $loc->city }}@if($loc->state && strtolower($loc->state) !== 'any'), {{ $loc->state }}@elseif($loc->country && strtolower($loc->country) !== 'any'), {{ $loc->country }}@endif</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -221,18 +229,18 @@
 
         <!-- Career Details Modal -->
         <div class="modal fade" id="jobModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content" style="border-radius: 12px; border: none; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
                     
                     <!-- Modal Header -->
-                    <div class="modal-header" style="border-bottom: 1px solid #eee; padding: 25px 40px; border-radius: 12px 12px 0 0;">
+                    <div class="modal-header d-flex justify-content-between align-items-start" style="border-bottom: 1px solid #eee; padding: 25px 40px; border-radius: 12px 12px 0 0;">
                         <div>
-                            <h2 id="modalJobTitle" style="font-size: 24px; font-weight: 500; color: var(--tl-color-theme-primary); margin-bottom: 5px;">Project Engineer (Electrical)</h2>
+                            <h2 id="modalJobTitle" style="font-size: 24px; font-weight: 600; color: var(--tl-color-theme-primary); margin-bottom: 5px;">Project Engineer (Electrical)</h2>
                             <div style="font-size: 15px; color: #6b7280; display: flex; align-items: center;">
                                 <i class="fa-regular fa-location-dot" style="margin-right: 8px;"></i> <span id="modalJobLocation">Rajkot, Gujarat</span>
                             </div>
                         </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: none; border: none; font-size: 20px; color: #9ca3af; margin-top: -15px;"><i class="fa-regular fa-xmark"></i></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: none; border: none; font-size: 20px; color: #9ca3af;"></button>
                     </div>
 
                     <!-- Modal Body - Details View -->
@@ -244,12 +252,28 @@
                             <strong>Position:</strong> <span id="modalPos">Project Engineer</span><br>
                             <strong>Location:</strong> <span id="modalLoc">Rajkot, Gujarat</span><br>
                             <strong>Number of Positions:</strong> <span id="modalNumPos">1</span>
+                            <span id="modalExtraInfo"></span>
                         </div>
 
-                        <div style="font-size: 13px; color: #374151; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px;">RESPONSIBILITIES:</div>
-                        <ul id="modalResponsibilities" style="list-style-type: none; padding-left: 0; color: #6b7280; font-size: 15px; line-height: 1.8; margin-bottom: 30px;">
-                            <!-- Injected via JS -->
-                        </ul>
+                        <div id="modalDescription" style="font-size: 15px; color: #4b5563; margin-bottom: 30px; line-height: 1.8;"></div>
+
+                        <div id="responsibilitiesSection" style="display:none;">
+                            <div style="font-size: 13px; color: #374151; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px;">RESPONSIBILITIES:</div>
+                            <ul id="modalResponsibilities" class="custom-modal-list" style="list-style-type: none; padding-left: 0; color: #6b7280; font-size: 15px; line-height: 1.8; margin-bottom: 30px;">
+                            </ul>
+                        </div>
+
+                        <div id="requirementsSection" style="display:none;">
+                            <div style="font-size: 13px; color: #374151; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px;">REQUIREMENTS:</div>
+                            <ul id="modalRequirements" class="custom-modal-list" style="list-style-type: none; padding-left: 0; color: #6b7280; font-size: 15px; line-height: 1.8; margin-bottom: 30px;">
+                            </ul>
+                        </div>
+
+                        <div id="benefitsSection" style="display:none;">
+                            <div style="font-size: 13px; color: #374151; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px;">PERKS & BENEFITS:</div>
+                            <ul id="modalBenefits" class="custom-modal-list" style="list-style-type: none; padding-left: 0; color: #6b7280; font-size: 15px; line-height: 1.8; margin-bottom: 30px;">
+                            </ul>
+                        </div>
 
                         <div style="font-size: 13px; color: #374151; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px;">EXPERIENCE:</div>
                         <div id="modalExperience" style="font-size: 15px; color: #6b7280; margin-bottom: 30px;">
@@ -271,34 +295,48 @@
                     <div class="modal-body" id="modalApplyView" style="padding: 30px 40px; display: none;">
                         <h3 style="font-size: 22px; font-weight: 500; color: #111827; margin-bottom: 25px;">Apply for <span id="applyJobTitle">Project Engineer (Electrical)</span></h3>
                         
-                        <form id="applyForm">
+                        <div id="modalAlertsContainer">
+                            @if ($errors->any())
+                                <div class="alert alert-danger" style="border-radius: 8px; font-size: 14.5px;">
+                                    <ul class="mb-0" style="padding-left: 20px;">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+
+                        <form id="applyForm" action="{{ route('careers.apply') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="career_id" id="applyJobId" value="{{ old('career_id') }}">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">First Name *</label>
-                                    <input type="text" class="form-control custom-modal-input" placeholder="John" required>
+                                    <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control custom-modal-input" placeholder="John" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Last Name *</label>
-                                    <input type="text" class="form-control custom-modal-input" placeholder="Doe" required>
+                                    <input type="text" name="last_name" value="{{ old('last_name') }}" class="form-control custom-modal-input" placeholder="Doe" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Email Address *</label>
-                                    <input type="email" class="form-control custom-modal-input" placeholder="john.doe@example.com" required>
+                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control custom-modal-input" placeholder="john.doe@example.com" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Phone Number *</label>
-                                    <input type="tel" class="form-control custom-modal-input" placeholder="+91 98765 43210" required>
+                                    <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control custom-modal-input" placeholder="+91 98765 43210" required>
                                 </div>
                             </div>
                             <div class="mb-3 mt-3">
-                                <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Upload Resume (PDF, DOCX) *</label>
-                                <input type="file" class="form-control custom-modal-input" style="padding: 10px; border-style: dashed; background-color: #f9fafb;" required>
+                                <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Upload Resume (PDF, DOC, DOCX) *</label>
+                                <input type="file" name="resume" class="form-control custom-modal-input" accept=".pdf,.doc,.docx" style="padding: 10px; border-style: dashed; background-color: #f9fafb;" required>
                             </div>
                             <div class="mb-3 mt-4">
                                 <label style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Cover Letter / Additional Info</label>
-                                <textarea class="form-control custom-modal-input" rows="4" placeholder="Briefly describe why you are a good fit for this role..."></textarea>
+                                <textarea name="cover_letter" class="form-control custom-modal-input" rows="4" placeholder="Briefly describe why you are a good fit for this role...">{{ old('cover_letter') }}</textarea>
                             </div>
                         </form>
                     </div>
@@ -334,12 +372,19 @@
                 color: #9ca3af !important;
             }
             
-            ul#modalResponsibilities li {
+            /* Professional styling for rich text content in modal */
+            #modalDescription h1 { font-size: 22px; font-weight: 600; color: #111827; margin-top: 20px; margin-bottom: 12px; line-height: 1.4; }
+            #modalDescription h2 { font-size: 20px; font-weight: 600; color: #1f2937; margin-top: 18px; margin-bottom: 10px; line-height: 1.4; }
+            #modalDescription h3 { font-size: 18px; font-weight: 600; color: #374151; margin-top: 16px; margin-bottom: 10px; line-height: 1.4; }
+            #modalDescription h4, #modalDescription h5, #modalDescription h6 { font-size: 16px; font-weight: 600; color: #4b5563; margin-top: 14px; margin-bottom: 8px; line-height: 1.4; }
+            #modalDescription p { margin-bottom: 12px; }
+            
+            .custom-modal-list li {
                 position: relative;
                 padding-left: 20px;
                 margin-bottom: 12px;
             }
-            ul#modalResponsibilities li::before {
+            .custom-modal-list li::before {
                 content: "";
                 position: absolute;
                 left: 0;
@@ -352,35 +397,28 @@
         </style>
 
         <script>
-            // Dummy job data for modal details and dynamic rendering
-            const jobData = {
-                "Electrical Panel Designer": {
-                    location: "Rajkot, Gujarat",
-                    numPositions: 2,
-                    type: "Full-time",
-                    details: [
-                        "Design low voltage (LV) and medium voltage (MV) electrical panels.",
-                        "Prepare single line diagrams (SLD) and control wiring schematics using AutoCAD.",
-                        "Select switchgear components and estimate bill of materials (BOM).",
-                        "Coordinate with the production team to ensure accurate panel assembly."
-                    ],
-                    experience: "2-4 years in electrical panel design and manufacturing.",
-                    qualifications: "B.E. / Diploma in Electrical Engineering."
-                },
-                "Panel Wiring Technician": {
-                    location: "Ahmedabad, Gujarat",
-                    numPositions: 5,
-                    type: "Full-time",
-                    details: [
-                        "Perform complete wiring of MCC, PCC, and control panels as per drawings.",
-                        "Mount switchgear components, busbars, and internal routing.",
-                        "Conduct continuity and high voltage (HV) testing of assembled panels.",
-                        "Ensure all wiring adheres strictly to safety standards and quality guidelines."
-                    ],
-                    experience: "1-3 years of hands-on experience in panel wiring.",
-                    qualifications: "ITI / Diploma in Electrical."
-                }
-            };
+            // Dynamic job data from backend
+            const jobData = {};
+            @foreach($careers as $job)
+                jobData["{{ $job->id }}"] = {
+                    title: @json($job->title),
+                    location: @json($job->location?->city ?? 'Remote'),
+                    numPositions: @json($job->vacancies ?? 1),
+                    type: @json($job->jobType?->name ?? 'Full-time'),
+                    department: @json($job->department?->name ?? ''),
+                    experience: @json($job->experience ?? 'Not specified'),
+                    qualifications: @json($job->education ?? 'Not specified'),
+                    description: @json($job->description ?? ''),
+                    responsibilities: @json($job->responsibilities->pluck('item')->toArray()),
+                    requirements: @json($job->requirements->pluck('item')->toArray()),
+                    benefits: @json($job->benefits->pluck('item')->toArray()),
+                    salary_type: @json($job->salary_type),
+                    currency: @json($job->currency ?? '₹'),
+                    salary_min: @json($job->salary_min),
+                    salary_max: @json($job->salary_max),
+                    deadline: @json($job->application_deadline ? $job->application_deadline->format('d M, Y') : null)
+                };
+            @endforeach
 
             function showApplyForm() {
                 document.getElementById('modalDetailsView').style.display = 'none';
@@ -397,41 +435,70 @@
             }
 
             function submitApplication() {
-                alert('Application submitted successfully!');
-                const modalEl = document.getElementById('jobModal');
-                // Bootstrap 5 modal instance
-                let modal = null;
-                if(typeof bootstrap !== 'undefined') {
-                    modal = bootstrap.Modal.getInstance(modalEl);
-                    if (modal) modal.hide();
-                } else if(typeof $ !== 'undefined') {
-                    $('#jobModal').modal('hide');
+                const form = document.getElementById('applyForm');
+                if (form.checkValidity()) {
+                    form.submit();
+                } else {
+                    form.reportValidity();
                 }
             }
 
-            function loadJobDetails(jobTitle) {
-                const data = jobData[jobTitle];
+            function loadJobDetails(jobId) {
+                const data = jobData[jobId];
                 if(data) {
-                    document.getElementById('modalJobTitle').innerText = jobTitle;
+                    document.getElementById('modalJobTitle').innerText = data.title;
                     document.getElementById('modalJobLocation').innerText = data.location;
-                    document.getElementById('applyJobTitle').innerText = jobTitle;
+                    document.getElementById('applyJobTitle').innerText = data.title;
+                    document.getElementById('applyJobId').value = jobId;
                     
-                    document.getElementById('modalPos').innerText = jobTitle;
+                    document.getElementById('modalPos').innerText = data.title;
                     document.getElementById('modalLoc').innerText = data.location;
                     document.getElementById('modalNumPos').innerText = data.numPositions || '1';
+                    
+                    // Additional info
+                    const extraInfo = [];
+                    if (data.department) extraInfo.push(`<strong>Department:</strong> ${data.department}`);
+                    
+                    let salaryText = '';
+                    if (data.salary_type === 'fixed' && data.salary_min) {
+                        salaryText = `${data.currency}${data.salary_min} LPA`;
+                    } else if (data.salary_type === 'range' && data.salary_min && data.salary_max) {
+                        salaryText = `${data.currency}${data.salary_min} - ${data.currency}${data.salary_max} LPA`;
+                    } else if (data.salary_type === 'negotiable') {
+                        salaryText = 'Negotiable';
+                    }
+                    if (salaryText) extraInfo.push(`<strong>Salary:</strong> ${salaryText}`);
+                    
+                    if (data.deadline) extraInfo.push(`<strong>Apply Before:</strong> <span class="text-danger">${data.deadline}</span>`);
+                    
+                    document.getElementById('modalExtraInfo').innerHTML = extraInfo.length ? '<br>' + extraInfo.join('<br>') : '';
+                    
+                    document.getElementById('modalDescription').innerHTML = data.description || '';
                     
                     document.getElementById('modalExperience').innerText = data.experience || 'Not specified';
                     document.getElementById('modalQualifications').innerText = data.qualifications || 'Not specified';
                     
-                    const ul = document.getElementById('modalResponsibilities');
-                    ul.innerHTML = '';
-                    if(data.details) {
-                        data.details.forEach(detail => {
-                            const li = document.createElement('li');
-                            li.innerText = detail;
-                            ul.appendChild(li);
-                        });
-                    }
+                    const populateList = (listId, sectionId, items) => {
+                        const ul = document.getElementById(listId);
+                        const section = document.getElementById(sectionId);
+                        ul.innerHTML = '';
+                        if (items && items.length > 0) {
+                            items.forEach(detail => {
+                                if(detail && detail.trim()) {
+                                    const li = document.createElement('li');
+                                    li.innerText = detail;
+                                    ul.appendChild(li);
+                                }
+                            });
+                            section.style.display = ul.children.length > 0 ? 'block' : 'none';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    };
+
+                    populateList('modalResponsibilities', 'responsibilitiesSection', data.responsibilities);
+                    populateList('modalRequirements', 'requirementsSection', data.requirements);
+                    populateList('modalBenefits', 'benefitsSection', data.benefits);
                     
                     showDetailsView();
                     const form = document.getElementById('applyForm');
@@ -455,21 +522,26 @@
                 const jobsListContainer = document.getElementById('jobsListContainer');
                 if (jobsListContainer) {
                     jobsListContainer.innerHTML = '';
-                    Object.keys(jobData).forEach(title => {
-                        const job = jobData[title];
+                    
+                    if (Object.keys(jobData).length === 0) {
+                        jobsListContainer.innerHTML = '<div class="text-center py-5"><p class="text-muted">No open positions currently available.</p></div>';
+                    }
+                    
+                    Object.keys(jobData).forEach(jobId => {
+                        const job = jobData[jobId];
                         const jobHTML = `
                             <div class="clean-job-row row align-items-center">
                                 <div class="col-lg-8 col-md-12 mb-3 mb-lg-0">
-                                    <h3 class="mb-2" style="font-size: 20px; font-weight: 400; color: #111;">${title}</h3>
+                                    <h3 class="mb-2" style="font-size: 20px; font-weight: 600; color: #111;">${job.title}</h3>
                                     <div class="d-flex flex-wrap mt-2">
                                         <span class="job-icon-text"><i class="fa-regular fa-user"></i> ${job.numPositions} Vacanc${job.numPositions > 1 ? 'ies' : 'y'}</span>
                                         <span class="job-icon-text"><i class="fa-regular fa-location-dot"></i> ${job.location}</span>
                                         <span class="job-icon-text"><i class="fa-regular fa-briefcase"></i> ${job.type}</span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-12 d-flex justify-content-lg-end mt-3 mt-lg-0">
-                                    <button class="btn-job-outline btn-eye" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="loadJobDetails('${title}')"><i class="fa-regular fa-eye"></i></button>
-                                    <a href="javascript:void(0)" class="btn-job-outline btn-apply" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="loadJobDetails('${title}'); setTimeout(showApplyForm, 100);">Apply</a>
+                                <div class="col-lg-4 col-md-12 d-flex justify-content-lg-end mt-3 mt-lg-0" style="gap: 12px;">
+                                    <button class="btn-job-outline btn-eye" style="margin-right: 0;" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="loadJobDetails('${jobId}')"><i class="fa-regular fa-eye"></i></button>
+                                    <a href="javascript:void(0)" class="btn-job-outline btn-apply" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="loadJobDetails('${jobId}'); setTimeout(showApplyForm, 100);">Apply</a>
                                 </div>
                             </div>
                         `;
@@ -515,6 +587,17 @@
                 } else if (locationSelect) {
                     locationSelect.addEventListener('change', filterJobs);
                 }
+                
+                // Auto-open modal if there are validation errors
+                @if($errors->any())
+                    const oldJobId = "{{ old('career_id') }}";
+                    if(oldJobId && jobData[oldJobId]) {
+                        loadJobDetails(oldJobId);
+                        showApplyForm();
+                        const bsModal = new bootstrap.Modal(document.getElementById('jobModal'));
+                        bsModal.show();
+                    }
+                @endif
             });
         </script>
 

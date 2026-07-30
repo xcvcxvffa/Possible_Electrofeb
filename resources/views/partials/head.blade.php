@@ -9,13 +9,13 @@
 <meta property="og:description" content="@yield('meta_description', 'Possible Electrofeb LLP - Leading Electrical & Engineering Solutions')">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ url()->current() }}">
-<meta property="og:image" content="{{ asset('assets/img/logo/logo-1.png') }}">
+<meta property="og:image" content="{{ $setting?->logo ? asset('storage/'.$setting?->logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}">
 
 <!-- Site Title -->
-<title>@yield('title', 'Possible Electrofeb LLP')</title>
+<title>@yield('title', $setting?->company_name ?? 'Possible Electrofeb LLP')</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ $setting?->favicon ? asset('storage/'.$setting?->favicon) : asset('assets/img/favicon.png') }}">
 
 <!-- CSS Here -->
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

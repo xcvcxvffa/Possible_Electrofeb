@@ -19,90 +19,34 @@
         <section class="service-inner pt-130 pb-130">
             <div class="container container-2">
                 <div class="row gy-5">
+                    @foreach($globalProducts as $index => $product)
                     <div class="col-lg-4 col-md-6">
                         <div class="service-item-3 antra-hover-view">
                             <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="LT AC COMBINER PANELS"></a>
-                                <span class="number">01</span>
+                                @if($product->cardMedia && $product->cardMedia->file_path)
+                                    <a href="{{ route('product.single', ['slug' => $product->slug]) }}"><img src="{{ asset('storage/'.$product->cardMedia->file_path) }}" alt="{{ $product->name }}"></a>
+                                @else
+                                    @php
+                                        $defaultImages = [
+                                            asset('assets/img/service/service-img-1.png'),
+                                            asset('assets/img/service/service-img-2.png'),
+                                            asset('assets/img/service/service-img-3.png'),
+                                            asset('assets/img/service/service-img-4.png'),
+                                            asset('assets/img/Product Image/Meter_Panel.webp')
+                                        ];
+                                        $fallbackImg = $defaultImages[$index % count($defaultImages)];
+                                    @endphp
+                                    <a href="{{ route('product.single', ['slug' => $product->slug]) }}"><img src="{{ $fallbackImg }}" alt="{{ $product->name }}"></a>
+                                @endif
+                                <span class="number">{{ sprintf('%02d', $index + 1) }}</span>
                             </div>
                             <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">LT AC COMBINER PANELS</a></h5>
-                                <p>High-capacity LT AC combiner boxes designed for robust power integration and solar generation.</p>
+                                <h5 class="title"><a href="{{ route('product.single', ['slug' => $product->slug]) }}">{{ strtoupper($product->name) }}</a></h5>
+                                <p>{{ $product->short_description ?? 'High-capacity electrical panels designed for robust power distribution and safety.' }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-2.png') }}" alt="LT PCC PANELS"></a>
-                                <span class="number">02</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">LT PCC PANELS</a></h5>
-                                <p>Heavy-duty Power Control Center panels for centralized power distribution and maximum safety.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-3.png') }}" alt="LT MCC PANEL"></a>
-                                <span class="number">03</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">LT MCC PANEL</a></h5>
-                                <p>Advanced Motor Control Center panels for reliable motor protection and automated industrial operations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-4.png') }}" alt="APFC PANEL"></a>
-                                <span class="number">04</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">APFC PANEL</a></h5>
-                                <p>Automatic Power Factor Correction panels engineered to optimize energy efficiency and cut utility costs.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-5.png') }}" alt="METER PANEL"></a>
-                                <span class="number">05</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">METER PANEL</a></h5>
-                                <p>Precision electrical meter panels for centralized industrial and commercial power monitoring.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-6.png') }}" alt="SOLAR ACDB / DCDB PANEL"></a>
-                                <span class="number">06</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">SOLAR ACDB / DCDB PANEL</a></h5>
-                                <p>Custom ACDB and DCDB distribution boxes tailored for solar power installations and isolation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item-3 antra-hover-view">
-                            <div class="service-thumb">
-                                <a href="{{ route('service.single') }}"><img src="{{ asset('assets/img/service/service-img-1.png') }}" alt="CABLE TRAY SYSTEM"></a>
-                                <span class="number">07</span>
-                            </div>
-                            <div class="service-content">
-                                <h5 class="title"><a href="{{ route('service.single') }}">CABLE TRAY SYSTEM</a></h5>
-                                <p>Industrial-grade perforated and ladder cable tray systems for organized cable management.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

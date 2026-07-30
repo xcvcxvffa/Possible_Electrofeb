@@ -1,6 +1,8 @@
-﻿@extends('layouts.master')
+@extends('layouts.master')
 
-@section('title', 'Blog Single - Antra')
+@section('title', isset($blog) && $blog->seo && $blog->seo->meta_title ? $blog->seo->meta_title : ($blog->title ?? 'Blog Details') . ' - Possible Electrofeb')
+@section('meta_description', isset($blog) && $blog->seo && $blog->seo->meta_description ? $blog->seo->meta_description : ($blog->excerpt ?? ''))
+@section('meta_keywords', isset($blog) && $blog->seo && $blog->seo->meta_keywords ? $blog->seo->meta_keywords : '')
 
 @section('content')
 <div id="antra-smooth-wrapper">
@@ -11,8 +13,8 @@
             <div class="overlay"></div>
             <div class="container">
                 <div class="page-header-content">
-                    <h1 class="title">Blog Details</h1>
-                    <h4 class="sub-title"><a class='home' href='service.html'>Home </a><span class="icon">-</span><a class='inner-page' href='blog-details.html'> Blog Details</a></h4>
+                    <h1 class="title" style="font-size: 40px;">{{ $blog->title }}</h1>
+                    <h4 class="sub-title"><a class='home' href='{{ route("home") }}'>Home </a><span class="icon">-</span><a class='inner-page' href='{{ route("blog.standard") }}'> Blog Details</a></h4>
                 </div>
             </div>
         </section>
@@ -26,138 +28,82 @@
                             <div class="post-card post-card-2 inner-post">
                                 <div class="post-content">
                                     <ul class="post-meta">
-                                        <li class="category">exteriors</li>
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
+                                        @if($blog->category)
+                                            <li class="category">{{ $blog->category->name }}</li>
+                                        @endif
+                                        <li>{{ $blog->published_at ? $blog->published_at->format('M d, Y') : $blog->created_at->format('M d, Y') }}</li>
+                                        <li>By <span>{{ $blog->author ? $blog->author->name : 'Admin' }}</span></li>
+                                        @if($blog->reading_time)
+                                            <li>{{ $blog->reading_time }} min read</li>
+                                        @endif
                                     </ul>
-                                    <h3 class="title">Transform Your Home With the Modern Interior Design Tips</h3>
+                                    <h3 class="title">{{ $blog->title }}</h3>
                                 </div>
                             </div>
+
                             <div class="blog-details-img mb-30">
-                                <img src="{{ asset('assets/img/blog/blog-details-img.png') }}" alt="blog">
+                                @if($blog->featuredMedia)
+                                    <img src="{{ asset('storage/' . $blog->featuredMedia->file_path) }}" alt="{{ $blog->title }}">
+                                @else
+                                    <img src="{{ asset('assets/img/blog/blog-details-img.png') }}" alt="{{ $blog->title }}">
+                                @endif
                             </div>
+
                             <div class="blog-details-content">
-                                <p class="mb-30">Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you’re updating a single room or redesigning your entire home, incorporating modern interior design principles can bring a fresh, sophisticated, and elegant ambiance. With an emphasis on minimalism, clean lines, open spaces, and smart functionality, modern interior design.</p>
-                                <h3 class="details-title-2">Understanding the Fundamentals</h3>
-                                <p class="mb-40">Start by eliminating unnecessary items and embracing a "less is more" approach. Instead of filling every corner with furniture and décor, choose a few statement pieces that enhance the aesthetic of room. Neutral tones, monochromatic palettes, and sleek, simple furniture contribute to the clean and uncluttered look of a modern home. This style often incorporates natural light, innovative materials, and a harmonious balance between form and function.</p>
+                                {!! $blog->content !!}
+                            </div>
+
+                            {{-- Gallery images (if available) — reuses theme's .details-img-wrap structure --}}
+                            @if($blog->gallery && $blog->gallery->count() > 0)
                                 <div class="details-img-wrap mt-40 mb-40">
-                                    <img src="{{ asset('assets/img/blog/blog-details-img-1.png') }}" alt="blog">
-                                    <img src="{{ asset('assets/img/blog/blog-details-img-2.png') }}" alt="blog">
+                                    @foreach($blog->gallery as $gItem)
+                                        @if($gItem->media)
+                                            <img src="{{ asset('storage/' . $gItem->media->file_path) }}" alt="{{ $blog->title }}">
+                                        @endif
+                                    @endforeach
                                 </div>
-                                <h3 class="details-title-2">Exploring Design Styles</h3>
-                                <p class="mb-40">Modern interior design prioritizes furniture that is both aesthetically pleasing and highly functional. Look for multi-purpose furniture such as extendable dining tables, sofa beds, or modular shelving units that provide storage solutions while maintaining a sleek look. Additionally, investing in ergonomic seating and workspaces enhances comfort and practicality, especially for home offices.</p>
-                                <blockquote class="mb-40">
-                                    <div class="shape"><img src="{{ asset('assets/img/icon/blog-details-1.png') }}" alt="icon"></div>
-                                    <div class="icon"><img src="{{ asset('assets/img/icon/quote-2.png') }}" alt="quote"></div>
-                                    <div class="content">
-                                        <p>“Modern interior design transforms ordinary spaces extraordinary environments. The core principle of modern design is "less is more," focusing on simplicity and the elimination of clutter.”</p>
-                                        <h4 class="author">Aaliyah Brown</h4>
-                                    </div>
-                                </blockquote>
-                                <h3 class="details-title-2">Bringing Modern Interior Design</h3>
-                                <p>Incorporating these modern interior design tips, you can transform your home into a stylish, functional, and comfortable haven. Whether you’re making small updates or going for a full renovation, focusing on minimalism, smart technology, natural elements, and functional and enhance the modern look.</p>
-                            </div>
-                            <div class="tags">
-                                <ul class="tag-list">
-                                    <li><a href="#">Furniture</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Interior</a></li>
-                                </ul>
-                            </div>
-                            <div class="comments-area">
-                                <div class="section-heading">
-                                    <h2 class="section-title">Customer Reviews</h2>
+                            @endif
+
+                            {{-- Downloadable documents (if available) --}}
+                            @if($blog->documents && $blog->documents->count() > 0)
+                                <div class="tags mt-30">
+                                    <ul class="tag-list">
+                                        @foreach($blog->documents as $doc)
+                                            @if($doc->media)
+                                                <li>
+                                                    <a href="{{ asset('storage/' . $doc->media->file_path) }}" target="_blank">
+                                                        <i class="fa-solid fa-file-arrow-down"></i> {{ $doc->title ?: $doc->media->file_name }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <div class="comment-item">
-                                    <div class="comment-thumb">
-                                        <img src="{{ asset('assets/img/blog/comment-thumb-1.png') }}" alt="author">
+                            @endif
+
+
+
+                            {{-- FAQ (if available) --}}
+                            @if($blog->faqs && is_array($blog->faqs) && count($blog->faqs) > 0)
+                                <div class="comments-area mt-50">
+                                    <div class="section-heading">
+                                        <h2 class="section-title">Frequently Asked Questions</h2>
                                     </div>
-                                    <div class="comment-info">
-                                        <div class="comment-top">
-                                            <h3 class="author">Roberto Miles </h3>
-                                            <div class="comments-meta">
-                                                <span>10 Dec, 2025 </span>
-                                            </div>
-                                        </div>
-                                        <p>
-                                            Implement advanced grid integration strategies to seamlessly integrate solar energy into Existing power grids. This includes deploying grid-friendly inverters
-                                        </p>
-                                        <button class="reply"><img src="{{ asset('assets/img/icon/arrow-left.png') }}" alt="arrow">Reply</button>
-                                    </div>
-                                </div>
-                                <div class="comment-item item-2">
-                                    <div class="comment-thumb">
-                                        <img src="{{ asset('assets/img/blog/comment-thumb-2.png') }}" alt="author">
-                                    </div>
-                                    <div class="comment-info">
-                                        <div class="comment-top">
-                                            <h3 class="author">Jenny Wilson </h3>
-                                            <div class="comments-meta">
-                                                <span>10 Dec, 2025 </span>
-                                            </div>
-                                        </div>
-                                        <p>
-                                            Implement advanced grid integration strategies to seamlessly integrate solar energy into Existing power grids. This includes deploying grid-friendly inverters
-                                        </p>
-                                        <button class="reply"><img src="{{ asset('assets/img/icon/arrow-left.png') }}" alt="arrow">Reply</button>
-                                    </div>
-                                </div>
-                                <div class="comment-item">
-                                    <div class="comment-thumb">
-                                        <img src="{{ asset('assets/img/blog/comment-thumb-3.png') }}" alt="author">
-                                    </div>
-                                    <div class="comment-info">
-                                        <div class="comment-top">
-                                            <h3 class="author">Jenny Wilson </h3>
-                                            <div class="comments-meta">
-                                                <span>10 Dec, 2025 </span>
-                                            </div>
-                                        </div>
-                                        <p>
-                                            Implement advanced grid integration strategies to seamlessly integrate solar energy into Existing power grids. This includes deploying grid-friendly inverters
-                                        </p>
-                                        <button class="reply"><img src="{{ asset('assets/img/icon/arrow-left.png') }}" alt="arrow">Reply</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ./ comments-area -->
-                            <div class="form-wrap pt-70">
-                                <div class="blog-contact-form">
-                                    <h2 class="title">Post Comment</h2>
-                                    <div class="request-form">
-                                        <form action="https://antra.ibthemespro.com/mail.php" method="post" id="ajax_contact" class="form-horizontal">
-                                            <div class="form-group row">
-                                                <div class="col-md-4">
-                                                    <div class="form-item">
-                                                        <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Name*">
+                                    @foreach($blog->faqs as $faq)
+                                        @if(!empty($faq['question']))
+                                            <div class="comment-item">
+                                                <div class="comment-info">
+                                                    <div class="comment-top">
+                                                        <h3 class="author">{{ $faq['question'] }}</h3>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-item">
-                                                        <input type="email" id="email" name="email" class="form-control" placeholder="Email*">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-item">
-                                                        <input type="website" id="website" name="website" class="form-control" placeholder="Website*">
-                                                    </div>
+                                                    <p>{{ $faq['answer'] ?? '' }}</p>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <div class="form-item message-item">
-                                                        <textarea id="message" name="message" cols="30" rows="8" class="form-control address" placeholder="Comment*"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="submit-btn">
-                                                <button id="submit" class="tl-primary-btn" type="submit">Post Comment<span class="icon"><i class="fa-regular fa-arrow-right"></i></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        @endif
+                                    @endforeach
                                 </div>
-                            </div>
-                            <!-- ./ form-wrap -->
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -166,3 +112,65 @@
         <!-- ./ Blog Details -->
 @endsection
 
+@push('scripts')
+<style>
+    /* Custom Typography for Blog Content */
+    .blog-details-content h1, 
+    .blog-details-content h2, 
+    .blog-details-content h3, 
+    .blog-details-content h4, 
+    .blog-details-content h5, 
+    .blog-details-content h6 {
+        color: #1e293b;
+        font-weight: 500;
+        margin-top: 1.8em;
+        margin-bottom: 0.8em;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+    }
+
+    .blog-details-content h1 { font-size: 34px; }
+    .blog-details-content h2 { font-size: 32px; }
+    .blog-details-content h3 { font-size: 26px; }
+    .blog-details-content h4 { font-size: 22px; }
+    
+    .blog-details-content p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #475569;
+        margin-bottom: 1.5em;
+    }
+    
+    .blog-details-content ul, 
+    .blog-details-content ol {
+        font-size: 16px;
+        color: #475569;
+        line-height: 1.8;
+        margin-bottom: 1.5em;
+        padding-left: 1.5em;
+    }
+    
+    .blog-details-content li {
+        margin-bottom: 0.5em;
+    }
+    
+    .blog-details-content blockquote {
+        border-left: 4px solid var(--primary, #3b82f6);
+        padding-left: 20px;
+        margin: 2em 0;
+        font-size: 18px;
+        font-style: italic;
+        color: #334155;
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+    }
+    
+    .blog-details-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1.5em 0;
+    }
+</style>
+@endpush

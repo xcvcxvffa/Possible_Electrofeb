@@ -6,14 +6,14 @@
                 <div class="header-left-wrap">
                     <div class="header-logo d-lg-block">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="Possible Electrofeb Logo" style="max-height: 48px; width: auto;">
+                            <img src="{{ $setting?->logo ? asset('storage/'.$setting?->logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="{{ $setting?->company_name ?? 'Possible Electrofeb' }} Logo" style="max-height: 48px; width: auto;">
                         </a>
                     </div>
                     @include('partials.navbar')
                 </div>
                 <div class="header-right-wrap">
                     <div class="header-btn-wrap">
-                        <a href="{{ asset('assets/Document/POSSIBLE ELECTROFEB COMPANY PROFILE.pdf') }}" target="_blank" class="tl-primary-btn header-btn">Get Company Profile</a>
+                        <a href="{{ $setting?->company_profile_pdf ? asset('storage/'.$setting?->company_profile_pdf) : asset('assets/Document/POSSIBLE ELECTROFEB COMPANY PROFILE.pdf') }}" target="_blank" class="tl-primary-btn header-btn">Get Company Profile</a>
                     </div>
                     <button class="mobile-side-menu-toggle d-lg-none" aria-label="Toggle Navigation">
                         <i class="fa-solid fa-bars"></i>
@@ -44,12 +44,12 @@
     </button>
     <div class="side-menu-content">
         <div class="side-menu-logo">
-            <a class="dark-img" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 48px; width: auto;"></a>
-            <a class="light-img" href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 48px; width: auto;"></a>
+            <a class="dark-img" href="{{ route('home') }}"><img src="{{ $setting?->dark_logo ? asset('storage/'.$setting?->dark_logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 48px; width: auto;"></a>
+            <a class="light-img" href="{{ route('home') }}"><img src="{{ $setting?->logo ? asset('storage/'.$setting?->logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 48px; width: auto;"></a>
         </div>
         <div class="side-menu-wrap"></div>
         <div class="side-menu-about">
-            <h4 class="title">Possible Electrofeb LLP - Leading Electrical & Engineering Solutions</h4>
+            <h4 class="title">{{ $setting?->company_name ?? 'Possible Electrofeb LLP' }} - Leading Electrical & Engineering Solutions</h4>
         </div>
         <div class="side-menu-gallary">
             <div class="side-menu-gallary-item">
@@ -73,9 +73,9 @@
         </div>
         <div class="side-menu-contact">
             <ul class="side-menu-list">
-                <li>Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311</li>
-                <li><a href="tel:+918200268204">+91 82002 68204</a></li>
-                <li><a class="mail" href="mailto:electrofeb@possiblegroups.com">electrofeb@possiblegroups.com</a></li>
+                <li>{{ $setting?->company_address ?? 'Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311' }}</li>
+                <li><a href="tel:{{ preg_replace('/[^0-9+]/', '', $setting?->company_phone ?? '+918200268204') }}">{{ $setting?->company_phone ?? '+91 82002 68204' }}</a></li>
+                <li><a class="mail" href="mailto:{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}">{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}</a></li>
             </ul>
         </div>
         <ul class="side-menu-social">
@@ -91,7 +91,7 @@
 <div class="mobile-side-menu">
     <div class="side-menu-content">
         <div class="side-menu-head">
-            <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 42px; width: auto;"></a>
+            <a href="{{ route('home') }}"><img src="{{ $setting?->logo ? asset('storage/'.$setting?->logo) : asset('assets/img/logo/POSSIBLE ELECTROFEB LOGO.svg') }}" alt="logo" style="max-height: 42px; width: auto;"></a>
             <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
         </div>
         <div class="side-menu-wrap"></div>

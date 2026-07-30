@@ -38,12 +38,12 @@
                             <div class="request-item-wrap">
                                 <div class="request-item white-content">
                                     <span>Address</span>
-                                    <p>Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311</p>
+                                    <p>{{ $setting?->company_address ?? 'Plot No.04, Shital Ind. Area, Opp Jamwadi G.I, opp. Vraj Cold Storage, D.C, Jamwadi, Gondal, Gujarat 360311' }}</p>
                                 </div>
                                 <div class="request-item white-content">
                                     <span>Support</span>
-                                    <a href="tel:+918200268204">+91 82002 68204</a>
-                                    <a href="mailto:electrofeb@possiblegroups.com">electrofeb@possiblegroups.com</a>
+                                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $setting?->company_phone ?? '+918200268204') }}">{{ $setting?->company_phone ?? '+91 82002 68204' }}</a>
+                                    <a href="mailto:{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}">{{ $setting?->company_email ?? 'electrofeb@possiblegroups.com' }}</a>
                                 </div>
                             </div>
                             <div class="contact-img">
@@ -52,20 +52,29 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 8px; margin-bottom: 25px;">
+                                <i class="fa-solid fa-circle-check me-2"></i>{{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <div class="request-form-wrap">
-                            <form action="#" method="post" id="ajax_contact" class="form-horizontal">
+                            <form action="{{ route('contact.submit') }}" method="POST" id="contact-form" class="request-form">
                                 @csrf
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <div class="form-item">
                                             <h4 class="form-title">Full Name *</h4>
-                                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="e.g. John Doe">
+                                            <input type="text" id="fullname" name="fullname" class="form-control @error('fullname') is-invalid @enderror" placeholder="e.g. John Doe" value="{{ old('fullname') }}">
+                                            @error('fullname') <span class="text-danger small">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-item">
                                             <h4 class="form-title">Phone *</h4>
-                                            <input type="text" id="phone" name="phone" class="form-control" placeholder="e.g. +91 98765 43210">
+                                            <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="e.g. +91 98765 43210" value="{{ old('phone') }}">
+                                            @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +82,8 @@
                                     <div class="col-md-6">
                                         <div class="form-item">
                                             <h4 class="form-title">Email Address *</h4>
-                                            <input type="text" id="email" name="email" class="form-control" placeholder="e.g. john@example.com">
+                                            <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="e.g. john@example.com" value="{{ old('email') }}">
+                                            @error('email') <span class="text-danger small">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -98,17 +108,14 @@
                                                 }
                                             </style>
                                             <h4 class="form-title">Select Product *</h4>
-                                            <select id="service" name="service" class="form-control form-select">
+                                            <select id="service" name="service" class="form-control form-select @error('service') is-invalid @enderror">
                                                 <option value="" selected disabled>-- Select Product --</option>
-                                                <option value="LT PCC PANELS">LT PCC PANELS</option>
-                                                <option value="LT AC COMBINER PANELS">LT AC COMBINER PANELS</option>
-                                                <option value="LT MCC PANEL">LT MCC PANEL</option>
-                                                <option value="APFC PANEL">APFC PANEL</option>
-                                                <option value="METER PANEL">METER PANEL</option>
-                                                <option value="SOLAR ACDB / DCDB PANEL">SOLAR ACDB / DCDB PANEL</option>
-                                                <option value="CABLE TRAY SYSTEM">CABLE TRAY SYSTEM</option>
-                                                <option value="General Inquiry">General Inquiry / Custom Solution</option>
+                                                @foreach($globalProducts as $contactProduct)
+                                                <option value="{{ strtoupper($contactProduct->name) }}" {{ old('service') == strtoupper($contactProduct->name) ? 'selected' : '' }}>{{ strtoupper($contactProduct->name) }}</option>
+                                                @endforeach
+                                                <option value="General Inquiry" {{ old('service') == 'General Inquiry' ? 'selected' : '' }}>General Inquiry / Custom Solution</option>
                                             </select>
+                                            @error('service') <span class="text-danger small">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +123,8 @@
                                     <div class="col-md-12">
                                         <div class="form-item message-item">
                                             <h4 class="form-title">Write Message <span style="font-weight: 400; font-size: 13px; color: #777777;">(Optional)</span></h4>
-                                            <textarea id="message" name="message" cols="30" rows="5" class="form-control address" placeholder="Write your message here (optional)..."></textarea>
+                                            <textarea id="message" name="message" cols="30" rows="5" class="form-control address @error('message') is-invalid @enderror" placeholder="Write your message here (optional)...">{{ old('message') }}</textarea>
+                                            @error('message') <span class="text-danger small">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
