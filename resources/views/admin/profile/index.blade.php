@@ -256,7 +256,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Changes</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-device-floppy me-1"></i> Save Changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -316,7 +316,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary); color: white; border: none; border-radius: 6px;"><i class="ti ti-lock me-1"></i> Update Password</button>
+                                        <button type="submit" class="btn px-4" style="background-color: var(--tl-color-theme-primary, #0097a0); color: white; border: none; border-radius: 6px;"><i class="ti ti-lock me-1"></i> Update Password</button>
                                     </div>
                                 </form>
                             </div>
