@@ -27,13 +27,6 @@
     .about-counter p { writing-mode: horizontal-tb !important; transform: none !important; margin-top: 10px !important; font-size: 18px !important; letter-spacing: normal !important; position: static !important; }
     .about-btn { text-align: center; }
 }
-
-/* Uniform product image sizing */
-.service-carousel .service-thumb img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-}
 </style>
 <div id="antra-smooth-wrapper">
     <div id="antra-smooth-content">
@@ -124,7 +117,7 @@
                     <div class="swiper-wrapper">
                         @foreach($globalProducts as $index => $product)
                         <div class="swiper-slide">
-                            <div class="service-item-2">
+                            <a href="{{ route('product.single', ['slug' => $product->slug]) }}" class="service-item-3 antra-hover-view d-block text-decoration-none h-100" style="cursor: pointer;">
                                 <div class="service-thumb">
                                     @if($product->cardMedia && $product->cardMedia->file_path)
                                         <img src="{{ asset('storage/'.$product->cardMedia->file_path) }}" alt="{{ $product->name }}">
@@ -144,10 +137,10 @@
                                     <span class="number">{{ sprintf('%02d', $index + 1) }}</span>
                                 </div>
                                 <div class="service-content">
-                                    <h5 class="title"><a href="{{ route('product.single', ['slug' => $product->slug]) }}">{{ strtoupper($product->name) }}</a></h5>
-                                    <p>{{ $product->short_description ?? 'High-capacity electrical panels designed for robust power distribution and safety.' }}</p>
+                                    <h5 class="title">{{ strtoupper($product->name) }}</h5>
+                                    <p>{{ Str::limit($product->short_description ?? 'High-capacity electrical panels designed for robust power distribution and safety.', 90) }}</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         @endforeach
                     </div>
